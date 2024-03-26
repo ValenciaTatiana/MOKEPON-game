@@ -4,12 +4,14 @@ function startGame() {
     let buttoSelectPet = document.querySelector("#button-pet");
     buttoSelectPet.addEventListener("click", () => {
 
+        let playerPetSelection = document.querySelector("#player-pet");
+
         if (document.querySelector("#hipodoge").checked) {
-            alert("Seleccionaste Hipodoge")
+            playerPetSelection.textContent = "Hipodoge"
         } else if (document.querySelector("#capipepo").checked) {
-            alert("Seleccionaste Capipepo")
+            playerPetSelection.textContent = "Capipepo"
         } else if (document.querySelector("#ratigueya").checked) {
-            alert("Seleccionaste Ratigueya")
+            playerPetSelection.textContent = "Ratigueya"
         } else {
             alert("Debes de seleccionar una mascota")
         }
