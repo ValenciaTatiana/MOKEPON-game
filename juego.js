@@ -1,6 +1,6 @@
-window.addEventListener("load", startGame) //Evento que llama a la función startGame cuando el HTML ha cargado completamente "load"
+window.addEventListener("load", playerSelection) //Evento que llama a la función startGame cuando el HTML ha cargado completamente "load"
 
-function startGame() {
+function playerSelection() {
     let buttoSelectPet = document.querySelector("#button-pet");
     buttoSelectPet.addEventListener("click", () => {
 
@@ -15,5 +15,20 @@ function startGame() {
         } else {
             alert("Debes de seleccionar una mascota")
         }
+
+        opponentSelection();
     })
+}
+
+function opponentSelection() {
+    let randomOption = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+    let opponentPetSelection = document.querySelector("#player-opponent");
+
+    if(randomOption == 1){
+        opponentPetSelection.textContent = "Hipodoge";
+    } else if (randomOption == 2) {
+        opponentPetSelection.textContent = "Capipepo";
+    } else {
+        opponentPetSelection.textContent = "Ratigueya";
+    }
 }
