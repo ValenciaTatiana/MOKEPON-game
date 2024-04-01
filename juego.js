@@ -3,6 +3,10 @@ let strokeOpponent;
 
 window.addEventListener("load", playerSelection) //Evento que llama a la función startGame cuando el HTML ha cargado completamente "load"
 
+function random(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function playerSelection() {
     let buttonSelectPet = document.querySelector("#button-pet");
     buttonSelectPet.addEventListener("click", () => {
@@ -24,7 +28,7 @@ function playerSelection() {
 }
 
 function opponentSelection() {
-    let randomOption = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+    let randomOption = random(1, 3)
     let opponentPetSelection = document.querySelector("#player-opponent");
 
     if (randomOption == 1) {
@@ -38,24 +42,24 @@ function opponentSelection() {
 
 function strokeFire() {
     strokePlayer = "Fire";
-    console.log("Jugador: " + strokePlayer);
+
     opponentStroke()
 }
 
 function strokeEarth() {
     strokePlayer = "Earth";
-    console.log("Jugador: " + strokePlayer);
+
     opponentStroke()
 }
 
 function strokeWater() {
     strokePlayer = "Water";
-    console.log("Jugador: " + strokePlayer);
+    
     opponentStroke()
 }
 
 function opponentStroke() {
-    let randomStroke = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+    let randomStroke = random(1, 3)
     
     if (randomStroke == 1) {
         strokeOpponent = "Fire";
@@ -64,5 +68,5 @@ function opponentStroke() {
     } else {
         strokeOpponent = "Water";
     }
-    console.log("Oponente: " + strokeOpponent)
+    
 }
