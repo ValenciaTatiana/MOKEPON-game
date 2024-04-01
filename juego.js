@@ -1,8 +1,11 @@
+let strokePlayer;
+let strokeOpponent;
+
 window.addEventListener("load", playerSelection) //Evento que llama a la función startGame cuando el HTML ha cargado completamente "load"
 
 function playerSelection() {
-    let buttoSelectPet = document.querySelector("#button-pet");
-    buttoSelectPet.addEventListener("click", () => {
+    let buttonSelectPet = document.querySelector("#button-pet");
+    buttonSelectPet.addEventListener("click", () => {
 
         let playerPetSelection = document.querySelector("#player-pet");
 
@@ -24,11 +27,42 @@ function opponentSelection() {
     let randomOption = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
     let opponentPetSelection = document.querySelector("#player-opponent");
 
-    if(randomOption == 1){
+    if (randomOption == 1) {
         opponentPetSelection.textContent = "Hipodoge";
     } else if (randomOption == 2) {
         opponentPetSelection.textContent = "Capipepo";
     } else {
         opponentPetSelection.textContent = "Ratigueya";
     }
+}
+
+function strokeFire() {
+    strokePlayer = "Fire";
+    console.log("Jugador: " + strokePlayer);
+    opponentStroke()
+}
+
+function strokeEarth() {
+    strokePlayer = "Earth";
+    console.log("Jugador: " + strokePlayer);
+    opponentStroke()
+}
+
+function strokeWater() {
+    strokePlayer = "Water";
+    console.log("Jugador: " + strokePlayer);
+    opponentStroke()
+}
+
+function opponentStroke() {
+    let randomStroke = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+    
+    if (randomStroke == 1) {
+        strokeOpponent = "Fire";
+    } else if (randomStroke == 2) {
+        strokeOpponent = "Earth";
+    } else {
+        strokeOpponent = "Water";
+    }
+    console.log("Oponente: " + strokeOpponent)
 }

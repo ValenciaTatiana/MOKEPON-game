@@ -11,7 +11,7 @@
 <body>
     <header>
         <h1>MOKEPON!!</h1>
-        <h3>Fire🔥 | Earth🌱 | Air🍃 | Water💧</h3>
+        <h3>Fire🔥 | Earth🌱 | Water💧</h3>
     </header>
     <section id="select-pet">
         <h2>Choose your pet</h2>
@@ -30,17 +30,16 @@
     <section id="select-attack">
         <h2>Choose your attack</h2>
 
-        < class="lives">
+        <div class="lives">
             <h3>Lives</h3>
             <p>Your pet <span id="player-pet"></span> tiene: <br><span>3 lives</span></p> <!-- Dinamico -->
             <p>Your opponent's pet <span id="player-opponent"></span> tiene: </span><br><span>3 lives</span></p> <!-- Dinamico --> <!-- IMPORTATE: cambiar vida o vida depediendo del caso -->
         </div>
 
         <p>
-            <button id="button-fire">Fire🔥</button>
-            <button id="button-earth">Earth🌱</button>
-            <button id="button-air">Air🍃</button>
-            <button id="button-water">Water💧</button>
+            <button id="button-fire" onclick= strokeFire()>Fire🔥</button>
+            <button id="button-earth" onclick= strokeEarth()>Earth🌱</button>
+            <button id="button-water" onclick= strokeWater()>Water💧</button>
         </p>
 
     </section>
