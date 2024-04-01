@@ -1,5 +1,7 @@
 let strokePlayer;
 let strokeOpponent;
+let livesPlayer = 3;
+let livesOpponent = 3;
 
 window.addEventListener("load", playerSelection) //Evento que llama a la función startGame cuando el HTML ha cargado completamente "load"
 
@@ -76,18 +78,30 @@ function strokeMessages() {
     // Agrega un elemento hijo(En este caso el parrafo creado) al elemento padre(En este caso al section, donde ira el mensaje)
     sectionMessage.appendChild(message)
 
-    let alert = document.createElement("h3");
+    // Resultado de batalla
+    let battleResult = document.createElement("h3");
 
-    if(strokePlayer == strokeOpponent) {
-        alert.textContent = "❗TIE🤝🏻"
-    } else if (strokePlayer == "WATER💧" && strokeOpponent == "FIRE🔥") {
-        alert.textContent = "🏆YOU WON!!🎉"
-    } else if (strokePlayer == "FIRE🔥" && strokeOpponent == "EARTH🌱") {
-        alert.textContent = "🏆YOU WON!!🎉"
-    } else if (strokePlayer == "EARTH🌱" && strokeOpponent == "WATER💧") {
-        alert.textContent = "🏆YOU WON!!🎉"
+    let counterLivesPlayer = document.querySelector("#life-player")
+    let counterLivesOpponent = document.querySelector("#life-opponent")
+
+    if (strokePlayer == strokeOpponent) {
+        battleResult.textContent = "❗TIE🤝🏻"
+    } else if ((strokePlayer == "WATER💧" && strokeOpponent == "FIRE🔥") ||
+        (strokePlayer == "FIRE🔥" && strokeOpponent == "EARTH🌱") ||
+        (strokePlayer == "EARTH🌱" && strokeOpponent == "WATER💧")) {
+
+        battleResult.textContent = "🏆YOU WON!!🎉"
+
+        livesOpponent--;
+        let livesText = livesOpponent <= 1 ? livesOpponent + " life" : livesOpponent + " lives";
+        counterLivesOpponent.textContent = livesText;
+
     } else {
-        alert.textContent = "❌YOU LOST😥"
+        battleResult.textContent = "❌YOU LOST😥"
+
+        livesPlayer--;
+        let livesText = livesPlayer <= 1 ? livesPlayer + " life" : livesPlayer + " lives";
+        counterLivesPlayer.textContent = livesText;
     }
-    sectionMessage.appendChild(alert)
+    sectionMessage.appendChild(battleResult)
 }
