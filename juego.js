@@ -22,14 +22,13 @@ function playerSelection() {
         } else {
             alert("Debes de seleccionar una mascota")
         }
-
         opponentSelection();
     })
 }
 
 function opponentSelection() {
     let randomOption = random(1, 3)
-    let opponentPetSelection = document.querySelector("#player-opponent");
+    let opponentPetSelection = document.querySelector("#opponent-pet");
 
     if (randomOption == 1) {
         opponentPetSelection.textContent = "Hipodoge";
@@ -41,32 +40,54 @@ function opponentSelection() {
 }
 
 function strokeFire() {
-    strokePlayer = "Fire";
-
+    strokePlayer = "FIRE🔥";
     opponentStroke()
 }
 
 function strokeEarth() {
-    strokePlayer = "Earth";
-
+    strokePlayer = "EARTH🌱";
     opponentStroke()
 }
 
 function strokeWater() {
-    strokePlayer = "Water";
-    
+    strokePlayer = "WATER💧";
     opponentStroke()
 }
 
 function opponentStroke() {
     let randomStroke = random(1, 3)
-    
+
     if (randomStroke == 1) {
-        strokeOpponent = "Fire";
+        strokeOpponent = "FIRE🔥";
     } else if (randomStroke == 2) {
-        strokeOpponent = "Earth";
+        strokeOpponent = "EARTH🌱";
     } else {
-        strokeOpponent = "Water";
+        strokeOpponent = "WATER💧";
     }
-    
+    strokeMessages()
+}
+
+function strokeMessages() {
+    // Selecciona el elemento donde ira el nuevo elemeto HTML
+    let sectionMessage = document.querySelector("#messages");
+    // Crea un nuevo elemento HTML
+    let message = document.createElement("p");
+    message.textContent = "Your MOKEPON attacked with " + strokePlayer + ", Your opponent's MOKEPON attacked with " + strokeOpponent;
+    // Agrega un elemento hijo(En este caso el parrafo creado) al elemento padre(En este caso al section, donde ira el mensaje)
+    sectionMessage.appendChild(message)
+
+    let alert = document.createElement("h3");
+
+    if(strokePlayer == strokeOpponent) {
+        alert.textContent = "❗TIE🤝🏻"
+    } else if (strokePlayer == "WATER💧" && strokeOpponent == "FIRE🔥") {
+        alert.textContent = "🏆YOU WON!!🎉"
+    } else if (strokePlayer == "FIRE🔥" && strokeOpponent == "EARTH🌱") {
+        alert.textContent = "🏆YOU WON!!🎉"
+    } else if (strokePlayer == "EARTH🌱" && strokeOpponent == "WATER💧") {
+        alert.textContent = "🏆YOU WON!!🎉"
+    } else {
+        alert.textContent = "❌YOU LOST😥"
+    }
+    sectionMessage.appendChild(alert)
 }
