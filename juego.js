@@ -3,14 +3,21 @@ let strokeOpponent;
 let livesPlayer = 3;
 let livesOpponent = 3;
 
-window.addEventListener("load", playerSelection) //Evento que llama a la función startGame cuando el HTML ha cargado completamente "load"
+window.addEventListener("load", playerSelectionPet) //Evento que llama a la función startGame cuando el HTML ha cargado completamente "load"
 
 function random(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function playerSelection() {
-    let buttonSelectPet = document.querySelector("#button-pet");
+function playerSelectionPet() {
+
+    let sectionSelectAttack = document.querySelector("#select-attack");
+    sectionSelectAttack.style.display = "none"
+
+    let sectionPlayAgain= document.querySelector("#play-again");
+    sectionPlayAgain.style.display = "none"
+
+    let buttonSelectPet = document.querySelector("#button-select-pet");
     buttonSelectPet.addEventListener("click", () => {
 
         let playerPetSelection = document.querySelector("#player-pet");
@@ -24,11 +31,18 @@ function playerSelection() {
         } else {
             alert("Debes de seleccionar una mascota")
         }
-        opponentSelection();
+
+        let sectionSelectPet = document.querySelector("#select-pet");
+        sectionSelectPet.style.display = "none"
+
+        let sectionSelectAttack = document.querySelector("#select-attack");
+        sectionSelectAttack.style.display = "block"
+
+        opponentSelectionPet();
     })
 }
 
-function opponentSelection() {
+function opponentSelectionPet() {
     let randomOption = random(1, 3)
     let opponentPetSelection = document.querySelector("#opponent-pet");
 
@@ -102,17 +116,19 @@ function strokeMessages() {
         livesPlayer--;
         let livesText = livesPlayer <= 1 ? livesPlayer + " life" : livesPlayer + " lives";
         counterLivesPlayer.textContent = livesText;
+        
     }
     sectionMessage.appendChild(battleResult)
+
 
     counterLives();
 }
 
 function counterLives() {
-    if(livesPlayer == 0) {
+    if (livesPlayer == 0) {
         alert("❌YOU LOST😥")
         disabledButtonStroke()
-    } else if(livesOpponent == 0) {
+    } else if (livesOpponent == 0) {
         alert("🏆YOU WON!!🎉")
         disabledButtonStroke()
     }
@@ -125,4 +141,7 @@ function disabledButtonStroke() {
     buttonEarth.disabled = true;
     let buttonWater = document.querySelector("#button-water");
     buttonWater.disabled = true;
+
+    let sectionPlayAgain= document.querySelector("#play-again");
+    sectionPlayAgain.style.display = "block"
 }
