@@ -104,4 +104,14 @@ function strokeMessages() {
         counterLivesPlayer.textContent = livesText;
     }
     sectionMessage.appendChild(battleResult)
+
+    counterLives();
+}
+
+function counterLives() {
+    if(livesPlayer == 0) {
+        alert("❌YOU LOST😥")
+    } else if(livesOpponent == 0) {
+        alert("🏆YOU WON!!🎉")
+    }
 }
