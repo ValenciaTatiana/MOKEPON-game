@@ -111,7 +111,18 @@ function strokeMessages() {
 function counterLives() {
     if(livesPlayer == 0) {
         alert("❌YOU LOST😥")
+        disabledButtonStroke()
     } else if(livesOpponent == 0) {
         alert("🏆YOU WON!!🎉")
+        disabledButtonStroke()
     }
+}
+
+function disabledButtonStroke() {
+    let buttonFire = document.querySelector("#button-fire");
+    buttonFire.disabled = true;
+    let buttonEarth = document.querySelector("#button-earth");
+    buttonEarth.disabled = true;
+    let buttonWater = document.querySelector("#button-water");
+    buttonWater.disabled = true;
 }
