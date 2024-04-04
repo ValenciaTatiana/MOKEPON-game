@@ -36,7 +36,7 @@ function playerSelectionPet() {
         sectionSelectPet.style.display = "none"
 
         let sectionSelectAttack = document.querySelector("#select-attack");
-        sectionSelectAttack.style.display = "block"
+        sectionSelectAttack.style.display = "flex"
 
         opponentSelectionPet();
     })
@@ -84,43 +84,50 @@ function opponentStroke() {
 }
 
 function strokeMessages() {
-    // Selecciona el elemento donde ira el nuevo elemeto HTML
-    let sectionMessage = document.querySelector("#messages");
-    // Crea un nuevo elemento HTML
-    let message = document.createElement("p");
-    message.textContent = "Your MOKEPON attacked with " + strokePlayer + ", Your opponent's MOKEPON attacked with " + strokeOpponent;
-    // Agrega un elemento hijo(En este caso el parrafo creado) al elemento padre(En este caso al section, donde ira el mensaje)
-    sectionMessage.appendChild(message)
+        // Selecciona el elemento donde ira el nuevo elemeto HTML
+        let result = document.querySelector("#result");
+        let resultStrokePlayer = document.querySelector("#stroke-player");
+        let resultStrokeOpponent = document.querySelector("#stroke-opponent");
+        // Crea un nuevo elemento HTML
+        let notificationResult = document.createElement("p");
+        let newStrokePlayer = document.createElement("p");
+        let newStrokeOpponent = document.createElement("p");
+    
+        notificationResult.innerHTML = result;
+        newStrokePlayer.innerHTML = strokePlayer;
+        newStrokeOpponent.innerHTML = strokeOpponent;
+    
+        // Agrega un elemento hijo(En este caso el parrafo creado) al elemento padre(En este caso al section, donde ira el mensaje)
+        result.appendChild(notificationResult);
+        resultStrokePlayer.appendChild(newStrokePlayer);
+        resultStrokeOpponent.appendChild(newStrokeOpponent);
 
     // Resultado de batalla
-    let battleResult = document.createElement("h3");
+    //let battleResult = document.createElement("h3");
 
     let counterLivesPlayer = document.querySelector("#life-player")
     let counterLivesOpponent = document.querySelector("#life-opponent")
 
     if (strokePlayer == strokeOpponent) {
-        battleResult.textContent = "❗TIE🤝🏻"
+        result.textContent = "❗TIE🤝🏻"
     } else if ((strokePlayer == "WATER💧" && strokeOpponent == "FIRE🔥") ||
         (strokePlayer == "FIRE🔥" && strokeOpponent == "EARTH🌱") ||
         (strokePlayer == "EARTH🌱" && strokeOpponent == "WATER💧")) {
 
-        battleResult.textContent = "🏆YOU WON!!🎉"
+        result.textContent = "🏆YOU WON!!🎉"
 
         livesOpponent--;
         let livesText = livesOpponent <= 1 ? livesOpponent + " life" : livesOpponent + " lives";
         counterLivesOpponent.textContent = livesText;
 
     } else {
-        battleResult.textContent = "❌YOU LOST😥"
+        result.textContent = "❌YOU LOST😥"
 
         livesPlayer--;
         let livesText = livesPlayer <= 1 ? livesPlayer + " life" : livesPlayer + " lives";
         counterLivesPlayer.textContent = livesText;
         
     }
-    sectionMessage.appendChild(battleResult)
-
-
     counterLives();
 }
 
