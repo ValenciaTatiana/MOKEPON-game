@@ -4,42 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOKEPON!</title>
+    <title>Mokepon!</title>
     <script src="juego.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <header>
-        <h1>MOKEPON!!</h1>
-        <h3>Fire🔥 | Earth🌱 | Water💧</h3>
-    </header>
     <section id="select-pet">
-        <h2>Choose your pet</h2>
-        
-        <label for="hipodoge">Hipodoge</label>
-        <input type="radio" name="mascota" id="hipodoge">
+        <h1 class="titel">Mokepon</h1>
+        <h3 class="caption">Fire🔥 | Earth🌱 | Water💧</h3>
 
-        <label for="capipepo">Capipepo</label>
-        <input type="radio" name="mascota" id="capipepo">
+        <h2 class="instruction">Choose your pet</h2>
+        <div class="cards">
+            <label class="cards-pets" for="hipodoge">
+                <p class="pet">Hipodoge</p>
+                <img src="img/mokepons_mokepon_hipodoge_attack.webp" alt="img-hipodoge">
+            </label>
+            <input type="radio" name="pet" id="hipodoge">
 
-        <label for="ratigueya">Ratigueya</label>
-        <input type="radio" name="mascota" id="ratigueya">
+            <label class="cards-pets" for="capipepo">
+                <p class="pet">Capipepo</p>
+                <img src="img/mokepons_mokepon_capipepo_attack.webp" alt="img-capipepo">
+            </label>
+            <input type="radio" name="pet" id="capipepo">
+
+            <label class="cards-pets" for="ratigueya">
+                <p class="pet">Ratigueya</p>
+                <img src="img/mokepons_mokepon_ratigueya_attack.webp" alt="img-ratigueya">
+            </label>
+            <input type="radio" name="pet" id="ratigueya">
+        </div>
 
         <button id="button-select-pet">Select</button>
     </section>
     <section id="select-attack">
-        <h2>Choose your attack</h2>
+
+        <h1 class="titel">Mokepon</h1>
+        <h3 class="caption">Fire🔥 | Earth🌱 | Water💧</h3>
+
+        <h2 class="instruction">Choose your attack</h2>
 
         <div class="lives">
             <h3>Lives</h3>
-            <p>Your pet <span id="player-pet"></span> tiene: <br><span id="life-player">3 lives</span></p> <!-- Dinamico -->
-            <p>Your opponent's pet <span id="opponent-pet"></span> tiene: </span><br><span id="life-opponent">3 lives</span></p> <!-- Dinamico --> <!-- IMPORTATE: cambiar vida o vida depediendo del caso -->
+            <p>Your pet <span id="player-pet"></span> tiene: <br><span id="life-player">3 lives</span></p>
+            <!-- Dinamico -->
+            <p>Your opponent's pet <span id="opponent-pet"></span> tiene: </span><br><span id="life-opponent">3
+                    lives</span></p> <!-- Dinamico --> <!-- IMPORTATE: cambiar vida o vida depediendo del caso -->
         </div>
 
         <p>
-            <button id="button-fire" onclick= strokeFire()>Fire🔥</button>
-            <button id="button-earth" onclick= strokeEarth()>Earth🌱</button>
-            <button id="button-water" onclick= strokeWater()>Water💧</button>
+            <button id="button-fire" onclick=strokeFire()>Fire🔥</button>
+            <button id="button-earth" onclick=strokeEarth()>Earth🌱</button>
+            <button id="button-water" onclick=strokeWater()>Water💧</button>
         </p>
 
     </section>

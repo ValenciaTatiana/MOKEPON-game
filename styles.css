@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
+body {
+    font-family: 'fredoka';
+    background-image: url(img/mountains-1412683_1280.png);
+    background-size: cover;
+}
+
+#select-pet {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.titel {
+    color: #F08080;
+    font-size: 40px;
+    margin-bottom: 1px;
+}
+
+.caption {
+    font-size: 20px;
+}
+
+.instruction {
+    font-size: 32px;
+}
+
+.cards {
+    display: flex;
+    gap: 10px;
+}
+.cards-pets {
+    width: 150px;
+    height: 200px;
+    background-color: #FEFDED;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.cards-pets img {
+    width: 130px;
+}
+
+.pet {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0;
+}
+
+input{
+    display: none;
+}
+
+button {
+    margin-top: 30px;
+    width: 150px;
+    height: 50px;
+    border-radius: 15px;
+    border: 2px solid #A1C398;
+    background-color: #C6EBC5;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: 'fredoka';
+}
+#button-select-pet:hover {
+    background-color: #FA7070;
+    border: 2px solid #fd5a5a;
+    color: white;
+}
+#button-fire:hover,
+#button-earth:hover,
+#button-water:hover {
+    background-color: #A1C398;
+}
