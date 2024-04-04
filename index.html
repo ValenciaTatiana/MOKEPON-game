@@ -15,13 +15,13 @@
         <h3 class="caption">Fire🔥 | Earth🌱 | Water💧</h3>
 
         <h2 class="instruction">Choose your pet</h2>
+
         <div class="cards">
             <label class="cards-pets" for="hipodoge">
                 <p class="pet">Hipodoge</p>
                 <img src="img/mokepons_mokepon_hipodoge_attack.webp" alt="img-hipodoge">
             </label>
             <input type="radio" name="pet" id="hipodoge">
-
             <label class="cards-pets" for="capipepo">
                 <p class="pet">Capipepo</p>
                 <img src="img/mokepons_mokepon_capipepo_attack.webp" alt="img-capipepo">
@@ -37,36 +37,32 @@
 
         <button id="button-select-pet">Select</button>
     </section>
+
     <section id="select-attack">
-
         <h1 class="titel">Mokepon</h1>
-        <h3 class="caption">Fire🔥 | Earth🌱 | Water💧</h3>
-
         <h2 class="instruction">Choose your attack</h2>
 
-        <div class="lives">
-            <h3>Lives</h3>
-            <p>Your pet <span id="player-pet"></span> tiene: <br><span id="life-player">3 lives</span></p>
-            <!-- Dinamico -->
-            <p>Your opponent's pet <span id="opponent-pet"></span> tiene: </span><br><span id="life-opponent">3
-                    lives</span></p> <!-- Dinamico --> <!-- IMPORTATE: cambiar vida o vida depediendo del caso -->
-        </div>
-
-        <p>
+        <div>
             <button id="button-fire" onclick=strokeFire()>Fire🔥</button>
             <button id="button-earth" onclick=strokeEarth()>Earth🌱</button>
             <button id="button-water" onclick=strokeWater()>Water💧</button>
-        </p>
+        </div>
 
-    </section>
-    <section id="messages">
+        <div>
+            <section id="messages">
+            </section>
 
-    </section>
-    <section id="play-again">
-        <button id="button-playAgain" onclick="location.reload()">Play again</button>
-    </section>
+            <section id="play-again">
+                <button id="button-playAgain" onclick="location.reload()">Play again</button>
+            </section>
+        </div>
 
-    <!-- <script src="juego.js"></script> -->
+        <div>
+            <p>Your pet <span id="player-pet"></span> tiene: <br><span id="life-player">3 lives</span></p>
+            <p>Your opponent's pet <span id="opponent-pet"></span> tiene: </span><br><span id="life-opponent">3
+                    lives</span></p>
+        </div>
+    </section>
 </body>
 
 </html>

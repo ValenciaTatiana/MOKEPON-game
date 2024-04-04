@@ -4,9 +4,11 @@ body {
     font-family: 'fredoka';
     background-image: url(img/mountains-1412683_1280.png);
     background-size: cover;
+    
 }
 
-#select-pet {
+#select-pet,
+#select-attack {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -34,7 +36,7 @@ body {
 .cards-pets {
     width: 150px;
     height: 200px;
-    background-color: #FEFDED;
+    background-color: rgba(254, 253, 237, 0.8);
     padding: 10px;
     box-sizing: border-box;
     border-radius: 15px;
@@ -42,6 +44,10 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.cards-pets:hover{
+    border: 3px solid #F08080;
+    cursor: pointer;
 }
 .cards-pets img {
     width: 130px;
@@ -72,9 +78,11 @@ button {
     background-color: #FA7070;
     border: 2px solid #fd5a5a;
     color: white;
+    cursor: pointer;
 }
 #button-fire:hover,
 #button-earth:hover,
 #button-water:hover {
     background-color: #A1C398;
+    cursor: pointer;
 }
