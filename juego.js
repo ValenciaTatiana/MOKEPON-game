@@ -114,15 +114,13 @@ function strokeMessages() {
         result.textContent = "🏆YOU WON!!🎉"
 
         livesOpponent--;
-        let livesText = livesOpponent <= 1 ? livesOpponent + " life" : livesOpponent + " lives";
-        counterLivesOpponent.textContent = livesText;
+        counterLivesOpponent.textContent = livesOpponent + "❤️​";
 
     } else {
         result.textContent = "❌YOU LOST😥"
 
         livesPlayer--;
-        let livesText = livesPlayer <= 1 ? livesPlayer + " life" : livesPlayer + " lives";
-        counterLivesPlayer.textContent = livesText;
+        counterLivesPlayer.textContent = livesPlayer + "❤️​";
         
     }
     counterLives();
