@@ -81,7 +81,8 @@ button {
 }
 #button-fire:hover,
 #button-earth:hover,
-#button-water:hover {
+#button-water:hover,
+#button-playAgain:hover {
     background-color: #A1C398;
     cursor: pointer;
 }
@@ -104,4 +105,11 @@ button {
     margin-top: 2rem;
     border-radius: 8px;
     padding: 10px;
+}
+
+.life-counter {
+    background-color: red;
+    display: grid;
+    grid-template-columns: 100px 100px;
+    gap: 3px;
 }

@@ -48,20 +48,25 @@
             <button id="button-water" onclick=strokeWater()>💧Water💧</button>
         </div>
 
-            <div id="messages">
-                <div id="result">✨Good luck!✨</div>
+        <div id="messages">
+            <div id="result">✨Good luck!✨</div>
 
-                <section id="play-again">
-                    <button id="button-playAgain" onclick="location.reload()">Play again</button>
-                </section>
+            <section id="play-again">
+                <button id="button-playAgain" onclick="location.reload()">Play again</button>
+            </section>
+        </div>
+
+        <div class="life-counter">
+            <div>
+                <p id="life-player">3 lives</p>
+                <p id="player-pet"></p>
+                <div id="stroke-player"></div>
             </div>
-
-        <div>
-            <div id="stroke-player"></div>
-            <div id="stroke-opponent"></div>
-            <p>Your pet <span id="player-pet"></span> tiene: <br><span id="life-player">3 lives</span></p>
-            <p>Your opponent's pet <span id="opponent-pet"></span> tiene: </span><br><span id="life-opponent">3
-                    lives</span></p>
+            <div>
+                <p id="life-opponent">3 lives</p>
+                <p id="opponent-pet"></p>
+                <div id="stroke-opponent"></div>
+            </div>
         </div>
     </section>
 </body>
