@@ -43,24 +43,22 @@
         <h2 class="instruction">Choose your attack</h2>
 
         <div>
-            <button id="button-fire" onclick=strokeFire()>Fire🔥</button>
-            <button id="button-earth" onclick=strokeEarth()>Earth🌱</button>
-            <button id="button-water" onclick=strokeWater()>Water💧</button>
+            <button id="button-fire" onclick=strokeFire()>🔥Fire🔥</button>
+            <button id="button-earth" onclick=strokeEarth()>🌱Earth🌱</button>
+            <button id="button-water" onclick=strokeWater()>💧Water💧</button>
         </div>
 
+            <div id="messages">
+                <div id="result">✨Good luck!✨</div>
+
+                <section id="play-again">
+                    <button id="button-playAgain" onclick="location.reload()">Play again</button>
+                </section>
+            </div>
+
         <div>
-            <!-- <section id="messages">
-            </section> -->
-            <div id="result"></div>
             <div id="stroke-player"></div>
             <div id="stroke-opponent"></div>
-
-            <section id="play-again">
-                <button id="button-playAgain" onclick="location.reload()">Play again</button>
-            </section>
-        </div>
-
-        <div>
             <p>Your pet <span id="player-pet"></span> tiene: <br><span id="life-player">3 lives</span></p>
             <p>Your opponent's pet <span id="opponent-pet"></span> tiene: </span><br><span id="life-opponent">3
                     lives</span></p>

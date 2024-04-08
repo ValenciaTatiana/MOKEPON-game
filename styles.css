@@ -89,3 +89,19 @@ button {
     flex-direction: column;
     align-items: center;
 }
+
+#messages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 300px;
+    background-color: rgba(254, 253, 237, 0.8);
+    color: black;
+    border: 2px solid  #FA7070;
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 2rem;
+    border-radius: 8px;
+    padding: 10px;
+}

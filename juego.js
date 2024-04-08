@@ -102,9 +102,6 @@ function strokeMessages() {
         resultStrokePlayer.appendChild(newStrokePlayer);
         resultStrokeOpponent.appendChild(newStrokeOpponent);
 
-    // Resultado de batalla
-    //let battleResult = document.createElement("h3");
-
     let counterLivesPlayer = document.querySelector("#life-player")
     let counterLivesOpponent = document.querySelector("#life-opponent")
 
@@ -132,11 +129,13 @@ function strokeMessages() {
 }
 
 function counterLives() {
+    let result = document.querySelector("#result");
+
     if (livesPlayer == 0) {
-        alert("❌YOU LOST😥")
+        result.textContent = "❌YOU LOST, I'm sorry.😥";
         disabledButtonStroke()
     } else if (livesOpponent == 0) {
-        alert("🏆YOU WON!!🎉")
+        result.textContent = "🏆YOU WON!! Congratulations.🎉";
         disabledButtonStroke()
     }
 }
