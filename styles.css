@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
 
+
 body {
     font-family: 'fredoka';
     background-image: url(img/mountains-1412683_1280.png);
     background-size: cover;
-    
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
 }
 
 #select-pet {
@@ -32,6 +35,7 @@ body {
     display: flex;
     gap: 10px;
 }
+
 .cards-pets {
     width: 150px;
     height: 200px;
@@ -45,10 +49,12 @@ body {
     justify-content: center;
     align-items: center;
 }
-.cards-pets:hover{
+
+.cards-pets:hover {
     border: 3px solid #F08080;
     cursor: pointer;
 }
+
 .cards-pets img {
     width: 130px;
 }
@@ -59,7 +65,7 @@ body {
     margin: 0;
 }
 
-input{
+input {
     display: none;
 }
 
@@ -74,12 +80,14 @@ button {
     font-weight: bold;
     font-family: 'fredoka';
 }
+
 #button-select-pet:hover {
     background-color: #FA7070;
     border: 2px solid #fd5a5a;
     color: white;
     cursor: pointer;
 }
+
 #button-fire:hover,
 #button-earth:hover,
 #button-water:hover,
@@ -87,6 +95,7 @@ button {
     background-color: #A1C398;
     cursor: pointer;
 }
+
 #select-attack {
     flex-direction: column;
     align-items: center;
@@ -101,7 +110,7 @@ button {
     background-color: rgba(254, 253, 237, 0.8);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 20.3);
     color: black;
-    border: 2px solid  white;
+    border: 2px solid white;
     border-radius: 8px;
     font-size: 26px;
     font-weight: bold;
@@ -141,8 +150,78 @@ button {
 
 #stroke-player,
 #stroke-opponent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     font-size: 24px;
     font-weight: bold;
     width: 200px;
     padding: 0.2rem;
 }
+
+
+@media (min-width: 1440px) {
+    html {
+        height: 100%
+    }
+}
+
+@media (max-width: 390px) {
+    .cards {
+        flex-direction: column;
+    }
+
+    .cards-pets {
+        width: 190px;
+    }
+
+    button {
+        margin: 30px 0px;
+    }
+
+    .button-attack {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #button-fire,
+    #button-earth,
+    #button-water {
+      margin: 0.5rem 0;  
+    }
+
+    .life-counter {
+        grid-template-columns: 90px 90px;
+        gap: 3rem;
+        margin: 1rem;
+    }
+
+    #player-pet,
+    #opponent-pet {
+        font-size: 27px;
+    }
+
+    #stroke-player,
+    #stroke-opponent {
+    font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        height: 100%
+    }
+    .titel {
+        font-size: 48px;
+    }
+    .cards-pets {
+        width: 220px;
+        height: 260px;
+    }
+    .pet {
+        font-size: 28px;
+    }
+    .cards-pets img {
+        width: 160px;
+    }    
+} 
