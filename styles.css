@@ -1,14 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
 
-
-body {
+html, body {
     font-family: 'fredoka';
     background-image: url(img/mountains-1412683_1280.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     margin: 0;
-}
+} 
 
 #select-pet {
     display: flex;
@@ -67,6 +66,11 @@ body {
 
 input {
     display: none;
+}
+
+input:checked + label {
+    border: 3px solid #F08080;
+    text-shadow: 0px 2px 2px #FA7070;
 }
 
 button {
@@ -162,7 +166,13 @@ button {
 
 @media (min-width: 1440px) {
     html {
-        height: 100%
+        height: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    html {
+        height: 100%;
     }
 }
 
@@ -208,9 +218,6 @@ button {
 }
 
 @media (max-width: 768px) {
-    html {
-        height: 100%
-    }
     .titel {
         font-size: 48px;
     }
@@ -224,4 +231,20 @@ button {
     .cards-pets img {
         width: 160px;
     }    
-} 
+}
+
+@media (max-width: 1440px) {
+    .titel {
+        font-size: 48px;
+    }
+    .cards-pets {
+        width: 220px;
+        height: 260px;
+    }
+    .pet {
+        font-size: 28px;
+    }
+    .cards-pets img {
+        width: 160px;
+    }    
+}
