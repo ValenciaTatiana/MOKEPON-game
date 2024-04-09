@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
 
-html, body {
+html,
+body {
     font-family: 'fredoka';
     background-image: url(img/mountains-1412683_1280.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     margin: 0;
-} 
+}
 
 #select-pet {
     display: flex;
@@ -16,7 +18,7 @@ html, body {
     align-items: center;
 }
 
-.titel {
+.title {
     color: #F08080;
     font-size: 40px;
     margin-bottom: 1px;
@@ -68,7 +70,7 @@ input {
     display: none;
 }
 
-input:checked + label {
+input:checked+label {
     border: 3px solid #F08080;
     text-shadow: 0px 2px 2px #FA7070;
 }
@@ -128,12 +130,15 @@ button {
     justify-items: center;
     text-align: center;
     gap: 4rem;
+    height: 180px;
+    width: 285px;
     margin: 1.5rem;
     background-color: rgba(254, 253, 237, 0.8);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 20.3);
     padding: 1rem 3rem;
     border: 2px solid white;
     border-radius: 8px;
+    overflow-y: auto;
 }
 
 #life-player,
@@ -149,7 +154,7 @@ button {
     font-weight: bold;
     color: #FA7070;
     text-shadow: 4px 3px 3px black;
-    margin-top: 1rem;
+    margin: 1rem;
 }
 
 #stroke-player,
@@ -197,13 +202,15 @@ button {
     #button-fire,
     #button-earth,
     #button-water {
-      margin: 0.5rem 0;  
+        margin: 0.5rem 0;
     }
 
     .life-counter {
         grid-template-columns: 90px 90px;
         gap: 3rem;
         margin: 1rem;
+        height: 165px;
+        width: 254px;
     }
 
     #player-pet,
@@ -213,38 +220,111 @@ button {
 
     #stroke-player,
     #stroke-opponent {
-    font-size: 20px;
+        font-size: 20px;
     }
 }
 
 @media (max-width: 768px) {
-    .titel {
+    .title {
         font-size: 48px;
     }
+
+    .cards {
+        gap: 10px;
+    }
+
     .cards-pets {
         width: 220px;
         height: 260px;
     }
+
     .pet {
         font-size: 28px;
     }
+
     .cards-pets img {
         width: 160px;
-    }    
+    }
 }
 
 @media (max-width: 1440px) {
-    .titel {
+    .title {
         font-size: 48px;
     }
+
     .cards-pets {
         width: 220px;
         height: 260px;
     }
+
     .pet {
         font-size: 28px;
     }
+
     .cards-pets img {
         width: 160px;
-    }    
+    }
+}
+
+@media (min-width: 1669px) {
+    .title {
+        font-size: 70px;
+    }
+
+    .caption {
+        font-size: 30px;
+    }
+
+    .instruction {
+        font-size: 36px;
+    }
+
+    .cards {
+        gap: 30px;
+    }
+
+    .cards-pets {
+        width: 255px;
+        height: 300px;
+    }
+
+    .pet {
+        font-size: 38px;
+    }
+
+    .cards-pets img {
+        width: 194px;
+    }
+
+    button {
+        width: 294px;
+        height: 70px;
+        font-size: 36px;
+    }
+
+    #messages {
+        width: 430px;
+        font-size: 34px;
+    }
+
+    .life-counter {
+        height: 208px;
+        width: 390px;
+        gap: 10rem;
+    }
+
+    #life-player,
+    #life-opponent {
+        font-size: 30px;
+    }
+
+    #player-pet,
+    #opponent-pet {
+        font-size: 34px;
+    }
+
+    #stroke-player,
+    #stroke-opponent {
+        font-size: 28px;
+    }
 }

@@ -14,7 +14,7 @@ function playerSelectionPet() {
     let sectionSelectAttack = document.querySelector("#select-attack");
     sectionSelectAttack.style.display = "none"
 
-    let sectionPlayAgain= document.querySelector("#play-again");
+    let sectionPlayAgain = document.querySelector("#play-again");
     sectionPlayAgain.style.display = "none"
 
     let buttonSelectPet = document.querySelector("#button-select-pet");
@@ -30,6 +30,7 @@ function playerSelectionPet() {
             playerPetSelection.textContent = "Ratigueya"
         } else {
             alert("Debes de seleccionar una mascota")
+            sectionSelectAttack.style.display = "none"
         }
 
         let sectionSelectPet = document.querySelector("#select-pet");
@@ -84,23 +85,23 @@ function opponentStroke() {
 }
 
 function strokeMessages() {
-        // Selecciona el elemento donde ira el nuevo elemeto HTML
-        let result = document.querySelector("#result");
-        let resultStrokePlayer = document.querySelector("#stroke-player");
-        let resultStrokeOpponent = document.querySelector("#stroke-opponent");
-        // Crea un nuevo elemento HTML
-        let notificationResult = document.createElement("p");
-        let newStrokePlayer = document.createElement("p");
-        let newStrokeOpponent = document.createElement("p");
-    
-        notificationResult.innerHTML = result;
-        newStrokePlayer.innerHTML = strokePlayer;
-        newStrokeOpponent.innerHTML = strokeOpponent;
-    
-        // Agrega un elemento hijo(En este caso el parrafo creado) al elemento padre(En este caso al section, donde ira el mensaje)
-        result.appendChild(notificationResult);
-        resultStrokePlayer.appendChild(newStrokePlayer);
-        resultStrokeOpponent.appendChild(newStrokeOpponent);
+    // Selecciona el elemento donde ira el nuevo elemeto HTML
+    let result = document.querySelector("#result");
+    let resultStrokePlayer = document.querySelector("#stroke-player");
+    let resultStrokeOpponent = document.querySelector("#stroke-opponent");
+    // Crea un nuevo elemento HTML
+    let notificationResult = document.createElement("p");
+    let newStrokePlayer = document.createElement("p");
+    let newStrokeOpponent = document.createElement("p");
+
+    notificationResult.innerHTML = result;
+    newStrokePlayer.innerHTML = strokePlayer;
+    newStrokeOpponent.innerHTML = strokeOpponent;
+
+    // Agrega un elemento hijo(En este caso el parrafo creado) al elemento padre(En este caso al section, donde ira el mensaje)
+    result.appendChild(notificationResult);
+    resultStrokePlayer.appendChild(newStrokePlayer);
+    resultStrokeOpponent.appendChild(newStrokeOpponent);
 
     let counterLivesPlayer = document.querySelector("#life-player")
     let counterLivesOpponent = document.querySelector("#life-opponent")
@@ -121,7 +122,7 @@ function strokeMessages() {
 
         livesPlayer--;
         counterLivesPlayer.textContent = livesPlayer + "❤️​";
-        
+
     }
     counterLives();
 }
@@ -146,6 +147,6 @@ function disabledButtonStroke() {
     let buttonWater = document.querySelector("#button-water");
     buttonWater.disabled = true;
 
-    let sectionPlayAgain= document.querySelector("#play-again");
+    let sectionPlayAgain = document.querySelector("#play-again");
     sectionPlayAgain.style.display = "block"
 }
