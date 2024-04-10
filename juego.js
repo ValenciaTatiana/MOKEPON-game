@@ -1,10 +1,12 @@
 const sectionSelectAttack = document.querySelector("#select-attack");
 const sectionPlayAgain = document.querySelector("#play-again");
 const sectionSelectPet = document.querySelector("#select-pet");
+const containerCards = document.querySelector("#container-cards");
 
 let mokepones = [];
 let strokePlayer;
 let strokeOpponent;
+let optionPets;
 let livesPlayer = 3;
 let livesOpponent = 3;
 
@@ -45,6 +47,8 @@ ratigueya.attack.push(
     {name: '🌱', id: 'button-earth'},
 )
 
+mokepones.push(hipodoge, capipepo, ratigueya)
+
 window.addEventListener("load", playerSelectionPet()) //Evento que llama a la función startGame cuando el HTML ha cargado completamente "load"
 
 function random(min, max) {
@@ -55,6 +59,16 @@ function playerSelectionPet() {
 
     sectionSelectAttack.style.display = "none"
     sectionPlayAgain.style.display = "none"
+
+    mokepones.forEach((mokepon) => {
+        optionPets = `<input type="radio" name="pet" id=${mokepon.name}>
+        <label class="cards-pets" for=${mokepon.name}>
+            <p class="pet">${mokepon.name}</p>
+            <img src=${mokepon.image} alt=${mokepon.name}>
+        </label>`
+
+        containerCards.innerHTML += optionPets;
+    })
 
     let buttonSelectPet = document.querySelector("#button-select-pet");
     buttonSelectPet.addEventListener("click", () => {
