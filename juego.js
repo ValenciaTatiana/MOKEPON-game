@@ -2,10 +2,48 @@ const sectionSelectAttack = document.querySelector("#select-attack");
 const sectionPlayAgain = document.querySelector("#play-again");
 const sectionSelectPet = document.querySelector("#select-pet");
 
+let mokepones = [];
 let strokePlayer;
 let strokeOpponent;
 let livesPlayer = 3;
 let livesOpponent = 3;
+
+class Mokepon {
+    constructor(name, image, lifes) {
+        this.name = name;
+        this.image = image;
+        this.lifes = lifes;
+        this.attack = [];
+    }
+}
+
+let hipodoge = new Mokepon('Hipodogue', 'img/mokepons_mokepon_hipodoge_attack.webp', 5)
+let capipepo = new Mokepon('Capipepo', 'img/mokepons_mokepon_capipepo_attack.webp', 5)
+let ratigueya = new Mokepon('Ratigueya', 'img/mokepons_mokepon_ratigueya_attack.webp', 5)
+
+hipodoge.attack.push(
+    {name: '💧', id: 'button-water'},
+    {name: '💧', id: 'button-water'},
+    {name: '💧', id: 'button-water'},
+    {name: '🔥', id: 'button-fire'},
+    {name: '🌱', id: 'button-earth'},
+)
+
+capipepo.attack.push(
+    {name: '🌱', id: 'button-earth'},
+    {name: '🌱', id: 'button-earth'},
+    {name: '🌱', id: 'button-earth'},
+    {name: '🔥', id: 'button-fire'},
+    {name: '💧', id: 'button-water'},
+)
+
+ratigueya.attack.push(
+    {name: '🔥', id: 'button-fire'},
+    {name: '🔥', id: 'button-fire'},
+    {name: '🔥', id: 'button-fire'},
+    {name: '💧', id: 'button-water'},
+    {name: '🌱', id: 'button-earth'},
+)
 
 window.addEventListener("load", playerSelectionPet()) //Evento que llama a la función startGame cuando el HTML ha cargado completamente "load"
 
