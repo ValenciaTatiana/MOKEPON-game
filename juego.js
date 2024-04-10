@@ -1,9 +1,13 @@
+const sectionSelectAttack = document.querySelector("#select-attack");
+const sectionPlayAgain = document.querySelector("#play-again");
+const sectionSelectPet = document.querySelector("#select-pet");
+
 let strokePlayer;
 let strokeOpponent;
 let livesPlayer = 3;
 let livesOpponent = 3;
 
-window.addEventListener("load", playerSelectionPet) //Evento que llama a la función startGame cuando el HTML ha cargado completamente "load"
+window.addEventListener("load", playerSelectionPet()) //Evento que llama a la función startGame cuando el HTML ha cargado completamente "load"
 
 function random(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -11,10 +15,7 @@ function random(min, max) {
 
 function playerSelectionPet() {
 
-    let sectionSelectAttack = document.querySelector("#select-attack");
     sectionSelectAttack.style.display = "none"
-
-    let sectionPlayAgain = document.querySelector("#play-again");
     sectionPlayAgain.style.display = "none"
 
     let buttonSelectPet = document.querySelector("#button-select-pet");
@@ -33,10 +34,7 @@ function playerSelectionPet() {
             sectionSelectAttack.style.display = "none"
         }
 
-        let sectionSelectPet = document.querySelector("#select-pet");
         sectionSelectPet.style.display = "none"
-
-        let sectionSelectAttack = document.querySelector("#select-attack");
         sectionSelectAttack.style.display = "flex"
 
         opponentSelectionPet();
@@ -45,7 +43,7 @@ function playerSelectionPet() {
 
 function opponentSelectionPet() {
     let randomOption = random(1, 3)
-    let opponentPetSelection = document.querySelector("#opponent-pet");
+    const opponentPetSelection = document.querySelector("#opponent-pet");
 
     if (randomOption == 1) {
         opponentPetSelection.textContent = "Hipodoge";
@@ -86,9 +84,9 @@ function opponentStroke() {
 
 function strokeMessages() {
     // Selecciona el elemento donde ira el nuevo elemeto HTML
-    let result = document.querySelector("#result");
-    let resultStrokePlayer = document.querySelector("#stroke-player");
-    let resultStrokeOpponent = document.querySelector("#stroke-opponent");
+    const result = document.querySelector("#result");
+    const resultStrokePlayer = document.querySelector("#stroke-player");
+    const resultStrokeOpponent = document.querySelector("#stroke-opponent");
     // Crea un nuevo elemento HTML
     let notificationResult = document.createElement("p");
     let newStrokePlayer = document.createElement("p");
@@ -103,8 +101,8 @@ function strokeMessages() {
     resultStrokePlayer.appendChild(newStrokePlayer);
     resultStrokeOpponent.appendChild(newStrokeOpponent);
 
-    let counterLivesPlayer = document.querySelector("#life-player")
-    let counterLivesOpponent = document.querySelector("#life-opponent")
+    const counterLivesPlayer = document.querySelector("#life-player")
+    const counterLivesOpponent = document.querySelector("#life-opponent")
 
     if (strokePlayer == strokeOpponent) {
         result.textContent = "❗TIE🤝🏻"
@@ -128,7 +126,7 @@ function strokeMessages() {
 }
 
 function counterLives() {
-    let result = document.querySelector("#result");
+    const result = document.querySelector("#result");
 
     if (livesPlayer == 0) {
         result.textContent = "❌YOU LOST, I'm sorry.😥";
@@ -140,13 +138,12 @@ function counterLives() {
 }
 
 function disabledButtonStroke() {
-    let buttonFire = document.querySelector("#button-fire");
+    const buttonFire = document.querySelector("#button-fire");
     buttonFire.disabled = true;
-    let buttonEarth = document.querySelector("#button-earth");
+    const buttonEarth = document.querySelector("#button-earth");
     buttonEarth.disabled = true;
-    let buttonWater = document.querySelector("#button-water");
+    const buttonWater = document.querySelector("#button-water");
     buttonWater.disabled = true;
 
-    let sectionPlayAgain = document.querySelector("#play-again");
     sectionPlayAgain.style.display = "block"
 }
