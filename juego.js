@@ -2,6 +2,7 @@ const sectionSelectAttack = document.querySelector("#select-attack");
 const sectionPlayAgain = document.querySelector("#play-again");
 const sectionSelectPet = document.querySelector("#select-pet");
 const containerCards = document.querySelector("#container-cards");
+const containerAttacks = document.querySelector("#container-attacks");
 
 let mokepones = [];
 let attackPlayer;
@@ -11,6 +12,10 @@ let inputHipodoge;
 let inputCapipepo;
 let inputRatigueya;
 let petPlayer;
+let attacksMokepons;
+let buttonFire;
+let buttonEarth;
+let buttonWater;
 let livesPlayer = 3;
 let livesOpponent = 3;
 
@@ -20,7 +25,7 @@ class Mokepon {
         this.name = name;
         this.image = image;
         this.lifes = lifes;
-        this.attack = [];
+        this.attackMokepon = [];
     }
 }
 
@@ -28,33 +33,33 @@ let hipodoge = new Mokepon('Hipodoge', 'img/mokepons_mokepon_hipodoge_attack.web
 let capipepo = new Mokepon('Capipepo', 'img/mokepons_mokepon_capipepo_attack.webp', 5)
 let ratigueya = new Mokepon('Ratigueya', 'img/mokepons_mokepon_ratigueya_attack.webp', 5)
 
-hipodoge.attack.push(
-    { name: '💧', id: 'button-water' },
-    { name: '💧', id: 'button-water' },
-    { name: '💧', id: 'button-water' },
-    { name: '🔥', id: 'button-fire' },
-    { name: '🌱', id: 'button-earth' },
+hipodoge.attackMokepon.push(
+    { name: '💧Water💧', id: 'button-water' },
+    { name: '💧Water💧', id: 'button-water' },
+    { name: '💧Water💧', id: 'button-water' },
+    { name: '🔥Fire🔥', id: 'button-fire' },
+    { name: '🌱Earth🌱', id: 'button-earth' },
 )
 
-capipepo.attack.push(
-    { name: '🌱', id: 'button-earth' },
-    { name: '🌱', id: 'button-earth' },
-    { name: '🌱', id: 'button-earth' },
-    { name: '🔥', id: 'button-fire' },
-    { name: '💧', id: 'button-water' },
+capipepo.attackMokepon.push(
+    { name: '🌱Earth🌱', id: 'button-earth' },
+    { name: '🌱Earth🌱', id: 'button-earth' },
+    { name: '🌱Earth🌱', id: 'button-earth' },
+    { name: '🔥Fire🔥', id: 'button-fire' },
+    { name: '💧Water💧', id: 'button-water' },
 )
 
-ratigueya.attack.push(
-    { name: '🔥', id: 'button-fire' },
-    { name: '🔥', id: 'button-fire' },
-    { name: '🔥', id: 'button-fire' },
-    { name: '💧', id: 'button-water' },
-    { name: '🌱', id: 'button-earth' },
+ratigueya.attackMokepon.push(
+    { name: '🔥Fire🔥', id: 'button-fire' },
+    { name: '🔥Fire🔥', id: 'button-fire' },
+    { name: '🔥Fire🔥', id: 'button-fire' },
+    { name: '💧Water💧', id: 'button-water' },
+    { name: '🌱Earth🌱', id: 'button-earth' },
 )
 
 mokepones.push(hipodoge, capipepo, ratigueya);
 
-window.addEventListener("load", startGame()) //Evento que llama a la función startGame cuando el HTML ha cargado completamente "load"
+window.addEventListener("load", startGame) //Evento que llama a la función startGame cuando el HTML ha cargado completamente "load"
 
 function random(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -122,18 +127,30 @@ function opponentSelectionPet() {
 function chooseAttack(playerPetSelection) {
     let attacks;
 
-    for (let mokepon of mokepones) {
-        if (petPlayer === mokepon.name) {
-            attacks = mokepon.attack;
+    for (let moke of mokepones) {
+        if(petPlayer === moke.name) {
+            attacks = moke.attackMokepon;
         }
     }
     showAttack(attacks);
 }
 
 function showAttack(attacks) {
+    attacks.forEach((attack) => {
+        attacksMokepons = `<button id=${attack.id} class="ButtonAttack">${attack.name}</button>`;
 
+        containerAttacks.innerHTML += attacksMokepons;
+    })
+
+    buttonFire = document.querySelector("#button-fire");
+    buttonEarth = document.querySelector("#button-earth");
+    buttonWater = document.querySelector("#button-water");
+
+    buttonFire.addEventListener("click", attackFire)
+    buttonEarth.addEventListener("click", attackEarth)
+    buttonWater.addEventListener("click", attackWater)
+    
 }
-
 function attackFire() {
     attackPlayer = "FIRE🔥";
     opponentAttack();
