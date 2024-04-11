@@ -4,12 +4,13 @@ const sectionSelectPet = document.querySelector("#select-pet");
 const containerCards = document.querySelector("#container-cards");
 
 let mokepones = [];
-let strokePlayer;
-let strokeOpponent;
+let attackPlayer;
+let attackOpponent;
 let optionPets;
 let inputHipodoge;
 let inputCapipepo;
 let inputRatigueya;
+let petPlayer;
 let livesPlayer = 3;
 let livesOpponent = 3;
 
@@ -28,30 +29,30 @@ let capipepo = new Mokepon('Capipepo', 'img/mokepons_mokepon_capipepo_attack.web
 let ratigueya = new Mokepon('Ratigueya', 'img/mokepons_mokepon_ratigueya_attack.webp', 5)
 
 hipodoge.attack.push(
-    {name: '💧', id: 'button-water'},
-    {name: '💧', id: 'button-water'},
-    {name: '💧', id: 'button-water'},
-    {name: '🔥', id: 'button-fire'},
-    {name: '🌱', id: 'button-earth'},
+    { name: '💧', id: 'button-water' },
+    { name: '💧', id: 'button-water' },
+    { name: '💧', id: 'button-water' },
+    { name: '🔥', id: 'button-fire' },
+    { name: '🌱', id: 'button-earth' },
 )
 
 capipepo.attack.push(
-    {name: '🌱', id: 'button-earth'},
-    {name: '🌱', id: 'button-earth'},
-    {name: '🌱', id: 'button-earth'},
-    {name: '🔥', id: 'button-fire'},
-    {name: '💧', id: 'button-water'},
+    { name: '🌱', id: 'button-earth' },
+    { name: '🌱', id: 'button-earth' },
+    { name: '🌱', id: 'button-earth' },
+    { name: '🔥', id: 'button-fire' },
+    { name: '💧', id: 'button-water' },
 )
 
 ratigueya.attack.push(
-    {name: '🔥', id: 'button-fire'},
-    {name: '🔥', id: 'button-fire'},
-    {name: '🔥', id: 'button-fire'},
-    {name: '💧', id: 'button-water'},
-    {name: '🌱', id: 'button-earth'},
+    { name: '🔥', id: 'button-fire' },
+    { name: '🔥', id: 'button-fire' },
+    { name: '🔥', id: 'button-fire' },
+    { name: '💧', id: 'button-water' },
+    { name: '🌱', id: 'button-earth' },
 )
 
-mokepones.push(hipodoge, capipepo, ratigueya)
+mokepones.push(hipodoge, capipepo, ratigueya);
 
 window.addEventListener("load", startGame()) //Evento que llama a la función startGame cuando el HTML ha cargado completamente "load"
 
@@ -70,10 +71,10 @@ function startGame() {
 
         containerCards.innerHTML += optionPets;
 
-        inputHipodoge = document.querySelector("#Hipodoge")
-        inputCapipepo = document.querySelector("#Capipepo")
-        inputRatigueya = document.querySelector("#Ratigueya")
-        
+        inputHipodoge = document.querySelector("#Hipodoge");
+        inputCapipepo = document.querySelector("#Capipepo");
+        inputRatigueya = document.querySelector("#Ratigueya");
+
     })
 
     playerSelectionPet()
@@ -91,98 +92,111 @@ function playerSelectionPet() {
 
         if (inputHipodoge.checked) {
             playerPetSelection.textContent = inputHipodoge.id;
+            petPlayer = inputHipodoge.id;
         } else if (inputCapipepo.checked) {
             playerPetSelection.textContent = inputCapipepo.id;
+            petPlayer = inputCapipepo.id;
         } else if (inputRatigueya.checked) {
             playerPetSelection.textContent = inputRatigueya.id;
+            petPlayer = inputRatigueya.id;
         } else {
-            alert("Debes de seleccionar una mascota")
+            alert("Debes de seleccionar una mascota");
             sectionSelectAttack.style.display = "none"
         }
 
-        sectionSelectPet.style.display = "none"
-        sectionSelectAttack.style.display = "flex"
+        sectionSelectPet.style.display = "none";
+        sectionSelectAttack.style.display = "flex";
 
+        chooseAttack(playerPetSelection)
         opponentSelectionPet();
     })
 }
 
 function opponentSelectionPet() {
-    let randomOption = random(1, 3)
+    let randomOption = random(0, mokepones.length - 1);
     const opponentPetSelection = document.querySelector("#opponent-pet");
 
-    if (randomOption == 1) {
-        opponentPetSelection.textContent = "Hipodoge";
-    } else if (randomOption == 2) {
-        opponentPetSelection.textContent = "Capipepo";
-    } else {
-        opponentPetSelection.textContent = "Ratigueya";
+    opponentPetSelection.innerHTML = mokepones[randomOption].name;
+}
+
+function chooseAttack(playerPetSelection) {
+    let attacks;
+
+    for (let mokepon of mokepones) {
+        if (petPlayer === mokepon.name) {
+            attacks = mokepon.attack;
+        }
     }
+    showAttack(attacks);
 }
 
-function strokeFire() {
-    strokePlayer = "FIRE🔥";
-    opponentStroke()
+function showAttack(attacks) {
+
 }
 
-function strokeEarth() {
-    strokePlayer = "EARTH🌱";
-    opponentStroke()
+function attackFire() {
+    attackPlayer = "FIRE🔥";
+    opponentAttack();
 }
 
-function strokeWater() {
-    strokePlayer = "WATER💧";
-    opponentStroke()
+function attackEarth() {
+    attackPlayer = "EARTH🌱";
+    opponentAttack();
 }
 
-function opponentStroke() {
-    let randomStroke = random(1, 3)
+function attackWater() {
+    attackPlayer = "WATER💧";
+    opponentAttack();
+}
 
-    if (randomStroke == 1) {
-        strokeOpponent = "FIRE🔥";
-    } else if (randomStroke == 2) {
-        strokeOpponent = "EARTH🌱";
+function opponentAttack() {
+    let randomAttack = random(1, 3)
+
+    if (randomAttack == 1) {
+        attackOpponent = "FIRE🔥";
+    } else if (randomAttack == 2) {
+        attackOpponent = "EARTH🌱";
     } else {
-        strokeOpponent = "WATER💧";
+        attackOpponent = "WATER💧";
     }
-    strokeMessages()
+    attackMessages();
 }
 
-function strokeMessages() {
+function attackMessages() {
     // Selecciona el elemento donde ira el nuevo elemeto HTML
     const result = document.querySelector("#result");
-    const resultStrokePlayer = document.querySelector("#stroke-player");
-    const resultStrokeOpponent = document.querySelector("#stroke-opponent");
+    const resultAttackPlayer = document.querySelector("#stroke-player");
+    const resultAttackOpponent = document.querySelector("#stroke-opponent");
     // Crea un nuevo elemento HTML
     let notificationResult = document.createElement("p");
-    let newStrokePlayer = document.createElement("p");
-    let newStrokeOpponent = document.createElement("p");
+    let newAttackPlayer = document.createElement("p");
+    let newAttackOpponent = document.createElement("p");
 
     notificationResult.innerHTML = result;
-    newStrokePlayer.innerHTML = strokePlayer;
-    newStrokeOpponent.innerHTML = strokeOpponent;
+    newAttackPlayer.innerHTML = attackPlayer;
+    newAttackOpponent.innerHTML = attackOpponent;
 
     // Agrega un elemento hijo(En este caso el parrafo creado) al elemento padre(En este caso al section, donde ira el mensaje)
     result.appendChild(notificationResult);
-    resultStrokePlayer.appendChild(newStrokePlayer);
-    resultStrokeOpponent.appendChild(newStrokeOpponent);
+    resultAttackPlayer.appendChild(newAttackPlayer);
+    resultAttackOpponent.appendChild(newAttackOpponent);
 
-    const counterLivesPlayer = document.querySelector("#life-player")
-    const counterLivesOpponent = document.querySelector("#life-opponent")
+    const counterLivesPlayer = document.querySelector("#life-player");
+    const counterLivesOpponent = document.querySelector("#life-opponent");
 
-    if (strokePlayer == strokeOpponent) {
-        result.textContent = "❗TIE🤝🏻"
-    } else if ((strokePlayer == "WATER💧" && strokeOpponent == "FIRE🔥") ||
-        (strokePlayer == "FIRE🔥" && strokeOpponent == "EARTH🌱") ||
-        (strokePlayer == "EARTH🌱" && strokeOpponent == "WATER💧")) {
+    if (attackPlayer == attackOpponent) {
+        result.textContent = "❗TIE🤝🏻";
+    } else if ((attackPlayer == "WATER💧" && attackOpponent == "FIRE🔥") ||
+        (attackPlayer == "FIRE🔥" && attackOpponent == "EARTH🌱") ||
+        (attackPlayer == "EARTH🌱" && attackOpponent == "WATER💧")) {
 
-        result.textContent = "🏆YOU WON!!🎉"
+        result.textContent = "🏆YOU WON!!🎉";
 
         livesOpponent--;
         counterLivesOpponent.textContent = livesOpponent + "❤️​";
 
     } else {
-        result.textContent = "❌YOU LOST😥"
+        result.textContent = "❌YOU LOST😥";
 
         livesPlayer--;
         counterLivesPlayer.textContent = livesPlayer + "❤️​";
@@ -196,14 +210,14 @@ function counterLives() {
 
     if (livesPlayer == 0) {
         result.textContent = "❌YOU LOST, I'm sorry.😥";
-        disabledButtonStroke()
+        disabledButtonAttack();
     } else if (livesOpponent == 0) {
         result.textContent = "🏆YOU WON!! Congratulations.🎉";
-        disabledButtonStroke()
+        disabledButtonAttack();
     }
 }
 
-function disabledButtonStroke() {
+function disabledButtonAttack() {
     const buttonFire = document.querySelector("#button-fire");
     buttonFire.disabled = true;
     const buttonEarth = document.querySelector("#button-earth");
@@ -211,5 +225,5 @@ function disabledButtonStroke() {
     const buttonWater = document.querySelector("#button-water");
     buttonWater.disabled = true;
 
-    sectionPlayAgain.style.display = "block"
+    sectionPlayAgain.style.display = "block";
 }
