@@ -5,7 +5,7 @@ const containerCards = document.querySelector("#container-cards");
 const containerAttacks = document.querySelector("#container-attacks");
 
 let mokepones = [];
-let attackPlayer;
+let attackPlayer = [];
 let attackOpponent;
 let optionPets;
 let inputHipodoge;
@@ -16,8 +16,9 @@ let attacksMokepons;
 let buttonFire;
 let buttonEarth;
 let buttonWater;
-let livesPlayer = 3;
-let livesOpponent = 3;
+let buttons = [];
+let livesPlayer = 5;
+let livesOpponent = 5;
 
 
 class Mokepon {
@@ -122,6 +123,7 @@ function opponentSelectionPet() {
     const opponentPetSelection = document.querySelector("#opponent-pet");
 
     opponentPetSelection.innerHTML = mokepones[randomOption].name;
+    sequenceButtons()
 }
 
 function chooseAttack(playerPetSelection) {
@@ -137,7 +139,7 @@ function chooseAttack(playerPetSelection) {
 
 function showAttack(attacks) {
     attacks.forEach((attack) => {
-        attacksMokepons = `<button id=${attack.id} class="ButtonAttack">${attack.name}</button>`;
+        attacksMokepons = `<button id=${attack.id} class="buttonAttack">${attack.name}</button>`;
 
         containerAttacks.innerHTML += attacksMokepons;
     })
@@ -146,24 +148,27 @@ function showAttack(attacks) {
     buttonEarth = document.querySelector("#button-earth");
     buttonWater = document.querySelector("#button-water");
 
-    buttonFire.addEventListener("click", attackFire)
-    buttonEarth.addEventListener("click", attackEarth)
-    buttonWater.addEventListener("click", attackWater)
-    
-}
-function attackFire() {
-    attackPlayer = "FIRE🔥";
-    opponentAttack();
+    buttons = document.querySelectorAll(".buttonAttack")
 }
 
-function attackEarth() {
-    attackPlayer = "EARTH🌱";
-    opponentAttack();
-}
-
-function attackWater() {
-    attackPlayer = "WATER💧";
-    opponentAttack();
+function sequenceButtons() {
+    buttons.forEach((button) => {
+        button.addEventListener("click", (e) => {
+            if(e.target.textContent === "🔥Fire🔥") {
+                attackPlayer.push('FIRE🔥');
+                console.log(attackPlayer)
+                button.style.backgroundColor = '#A1C398';
+            } else if(e.target.textContent === "🌱Earth🌱") {
+                attackPlayer.push('EARTH🌱');
+                console.log(attackPlayer)
+                button.style.backgroundColor = '#A1C398';
+            } else {
+                attackPlayer.push('WATER💧');
+                console.log(attackPlayer)
+                button.style.backgroundColor = '#A1C398';
+            }
+        })
+    })
 }
 
 function opponentAttack() {
