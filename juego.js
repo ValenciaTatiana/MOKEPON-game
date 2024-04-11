@@ -7,8 +7,12 @@ let mokepones = [];
 let strokePlayer;
 let strokeOpponent;
 let optionPets;
+let inputHipodoge;
+let inputCapipepo;
+let inputRatigueya;
 let livesPlayer = 3;
 let livesOpponent = 3;
+
 
 class Mokepon {
     constructor(name, image, lifes) {
@@ -19,7 +23,7 @@ class Mokepon {
     }
 }
 
-let hipodoge = new Mokepon('Hipodogue', 'img/mokepons_mokepon_hipodoge_attack.webp', 5)
+let hipodoge = new Mokepon('Hipodoge', 'img/mokepons_mokepon_hipodoge_attack.webp', 5)
 let capipepo = new Mokepon('Capipepo', 'img/mokepons_mokepon_capipepo_attack.webp', 5)
 let ratigueya = new Mokepon('Ratigueya', 'img/mokepons_mokepon_ratigueya_attack.webp', 5)
 
@@ -49,10 +53,30 @@ ratigueya.attack.push(
 
 mokepones.push(hipodoge, capipepo, ratigueya)
 
-window.addEventListener("load", playerSelectionPet()) //Evento que llama a la función startGame cuando el HTML ha cargado completamente "load"
+window.addEventListener("load", startGame()) //Evento que llama a la función startGame cuando el HTML ha cargado completamente "load"
 
 function random(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function startGame() {
+
+    mokepones.forEach((mokepon) => {
+        optionPets = `<input type="radio" name="pet" id=${mokepon.name} />
+        <label class="cards-pets" for=${mokepon.name}>
+            <p class="pet">${mokepon.name}</p>
+            <img src=${mokepon.image} alt=${mokepon.name}>
+        </label>`
+
+        containerCards.innerHTML += optionPets;
+
+        inputHipodoge = document.querySelector("#Hipodoge")
+        inputCapipepo = document.querySelector("#Capipepo")
+        inputRatigueya = document.querySelector("#Ratigueya")
+        
+    })
+
+    playerSelectionPet()
 }
 
 function playerSelectionPet() {
@@ -60,27 +84,17 @@ function playerSelectionPet() {
     sectionSelectAttack.style.display = "none"
     sectionPlayAgain.style.display = "none"
 
-    mokepones.forEach((mokepon) => {
-        optionPets = `<input type="radio" name="pet" id=${mokepon.name}>
-        <label class="cards-pets" for=${mokepon.name}>
-            <p class="pet">${mokepon.name}</p>
-            <img src=${mokepon.image} alt=${mokepon.name}>
-        </label>`
-
-        containerCards.innerHTML += optionPets;
-    })
-
     let buttonSelectPet = document.querySelector("#button-select-pet");
     buttonSelectPet.addEventListener("click", () => {
 
         let playerPetSelection = document.querySelector("#player-pet");
 
-        if (document.querySelector("#hipodoge").checked) {
-            playerPetSelection.textContent = "Hipodoge"
-        } else if (document.querySelector("#capipepo").checked) {
-            playerPetSelection.textContent = "Capipepo"
-        } else if (document.querySelector("#ratigueya").checked) {
-            playerPetSelection.textContent = "Ratigueya"
+        if (inputHipodoge.checked) {
+            playerPetSelection.textContent = inputHipodoge.id;
+        } else if (inputCapipepo.checked) {
+            playerPetSelection.textContent = inputCapipepo.id;
+        } else if (inputRatigueya.checked) {
+            playerPetSelection.textContent = inputRatigueya.id;
         } else {
             alert("Debes de seleccionar una mascota")
             sectionSelectAttack.style.display = "none"
