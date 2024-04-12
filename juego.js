@@ -4,6 +4,13 @@ const sectionSelectPet = document.querySelector("#select-pet");
 const containerCards = document.querySelector("#container-cards");
 const containerAttacks = document.querySelector("#container-attacks");
 
+const resultConbat = document.querySelector("#result");
+const resultAttackPlayer = document.querySelector("#stroke-player");
+const resultAttackOpponent = document.querySelector("#stroke-opponent");
+
+const counterLivesPlayer = document.querySelector("#life-player");
+const counterLivesOpponent = document.querySelector("#life-opponent");
+
 let mokepones = [];
 let attackPlayer = [];
 let attackOpponent = [];
@@ -19,8 +26,12 @@ let buttonFire;
 let buttonEarth;
 let buttonWater;
 let buttons = [];
-let livesPlayer = 5;
-let livesOpponent = 5;
+let indexAttackPlayer;
+let indexAttackOpponent;
+let victoriesPlayer = 0;
+let victoriesOpponent = 0;
+let livesPlayer = 3;
+let livesOpponent = 3;
 
 
 class Mokepon {
@@ -127,7 +138,7 @@ function opponentSelectionPet() {
     opponentPetSelection.innerHTML = mokepones[randomOption].name;
     attacksMokeponsOpponent = mokepones[randomOption].attackMokepon;
 
-    for(let attackPetOpponent of attacksMokeponsOpponent) {
+    for (let attackPetOpponent of attacksMokeponsOpponent) {
         attackOpponent.push(attackPetOpponent.name);
     }
 
@@ -138,7 +149,7 @@ function chooseAttack(playerPetSelection) {
     let attacks;
 
     for (let moke of mokepones) {
-        if(petPlayer === moke.name) {
+        if (petPlayer === moke.name) {
             attacks = moke.attackMokepon;
         }
     }
@@ -162,17 +173,16 @@ function showAttack(attacks) {
 function sequenceButtons() {
     buttons.forEach((button) => {
         button.addEventListener("click", (e) => {
-            if(e.target.textContent === "🔥Fire🔥") {
+            if (e.target.textContent === "🔥Fire🔥") {
                 attackPlayer.push('Fire🔥');
                 button.style.backgroundColor = '#A1C398';
-            } else if(e.target.textContent === "🌱Earth🌱") {
+            } else if (e.target.textContent === "🌱Earth🌱") {
                 attackPlayer.push('Earth🌱');
                 button.style.backgroundColor = '#A1C398';
             } else {
                 attackPlayer.push('Water💧');
                 button.style.backgroundColor = '#A1C398';
             }
-            console.log("jugador")
             console.log(attackPlayer)
             opponentAttack()
         })
@@ -180,73 +190,96 @@ function sequenceButtons() {
 }
 
 function opponentAttack() {
-    let randomAttack = random(0, attackOpponent.length -1)
+    let randomAttack = random(0, attackOpponent.length - 1)
 
-    if(attackOpponent[randomAttack] === '🔥Fire🔥') {
-        attackOpponent.splice(randomAttack,1)
+    if (attackOpponent[randomAttack] === '🔥Fire🔥') {
+        attackOpponent.splice(randomAttack, 1)
         attackRamdonOpponent.push('Fire🔥')
-    } else if(attackOpponent[randomAttack] === '🌱Earth🌱') {
-        attackOpponent.splice(randomAttack,1)
+    } else if (attackOpponent[randomAttack] === '🌱Earth🌱') {
+        attackOpponent.splice(randomAttack, 1)
         attackRamdonOpponent.push('Earth🌱')
-    } else if(attackOpponent[randomAttack] === '💧Water💧'){
-        attackOpponent.splice(randomAttack,1)
+    } else if (attackOpponent[randomAttack] === '💧Water💧') {
+        attackOpponent.splice(randomAttack, 1)
         attackRamdonOpponent.push('Water💧')
     }
-
-    attackMessages();
+    console.log(attackRamdonOpponent)
+    startCombat()
 }
 
-function attackMessages() {
-    // Selecciona el elemento donde ira el nuevo elemeto HTML
-    const result = document.querySelector("#result");
-    const resultAttackPlayer = document.querySelector("#stroke-player");
-    const resultAttackOpponent = document.querySelector("#stroke-opponent");
-    // Crea un nuevo elemento HTML
-    let notificationResult = document.createElement("p");
+function startCombat() {
+    if (attackPlayer.length === 5) {
+        combat()
+    }
+}
+
+function attcksBothPlayers(player, opponent) {
+    indexAttackPlayer = attackPlayer[player]
+    indexAttackOpponent = attackRamdonOpponent[opponent]
+
+    console.log(indexAttackPlayer)
+    console.log(indexAttackOpponent)
+}
+
+function combat() {
+
+    for (let i = 0; i < attackPlayer.length; i++) {
+        if (attackPlayer[i] === attackRamdonOpponent[i]) {
+            attcksBothPlayers(i, i)
+            combatMessages("❗TIE🤝🏻");
+        } else if ((attackPlayer[i] == "Water💧" && attackRamdonOpponent[i] == "Fire🔥") ||
+            (attackPlayer[i] == "Fire🔥" && attackRamdonOpponent[i] == "Earth🌱") ||
+            (attackPlayer[i] == "Earth🌱" && attackRamdonOpponent[i] == "Water💧")) {
+            attcksBothPlayers(i, i)
+            combatMessages("🏆YOU WON!!🎉");
+            victoriesPlayer++
+        } else {
+            attcksBothPlayers(i, i)
+            combatMessages("❌YOU LOST😥");
+            victoriesOpponent++
+        }
+    }
+    console.log(victoriesPlayer);
+    console.log(victoriesOpponent);
+    counterVictories();
+}
+
+function combatMessages(result) {
+    //Crea un nuevo elemento HTML
     let newAttackPlayer = document.createElement("p");
     let newAttackOpponent = document.createElement("p");
 
-    notificationResult.innerHTML = result;
-    newAttackPlayer.innerHTML = attackPlayer;
-    newAttackOpponent.innerHTML = attackOpponent;
+    resultConbat.innerHTML = result;
+    newAttackPlayer.innerHTML = indexAttackPlayer;
+    newAttackOpponent.innerHTML = indexAttackOpponent;
 
-    // Agrega un elemento hijo(En este caso el parrafo creado) al elemento padre(En este caso al section, donde ira el mensaje)
-    result.appendChild(notificationResult);
+    //Agrega un elemento hijo(En este caso el parrafo creado) al elemento padre(En este caso al section, donde ira el mensaje)
     resultAttackPlayer.appendChild(newAttackPlayer);
     resultAttackOpponent.appendChild(newAttackOpponent);
+}
 
-    const counterLivesPlayer = document.querySelector("#life-player");
-    const counterLivesOpponent = document.querySelector("#life-opponent");
+function counterVictories() {
 
-    if (attackPlayer == attackOpponent) {
-        result.textContent = "❗TIE🤝🏻";
-    } else if ((attackPlayer == "WATER💧" && attackOpponent == "FIRE🔥") ||
-        (attackPlayer == "FIRE🔥" && attackOpponent == "EARTH🌱") ||
-        (attackPlayer == "EARTH🌱" && attackOpponent == "WATER💧")) {
-
-        result.textContent = "🏆YOU WON!!🎉";
-
-        livesOpponent--;
+    if (victoriesPlayer >= 3) {
+        combatMessages("🏆YOU WON!! Your opponent loses ❗​1️⃣​ life");
+        livesOpponent--
         counterLivesOpponent.textContent = livesOpponent + "❤️​";
-
+    } else if (victoriesOpponent >= 3) {
+        combatMessages("❌YOU LOST, You lost ❗​1️⃣​ life");
+        livesPlayer--
+        counterLivesOpponent.textContent = livesOpponent + "❤️​";
     } else {
-        result.textContent = "❌YOU LOST😥";
-
-        livesPlayer--;
-        counterLivesPlayer.textContent = livesPlayer + "❤️​";
-
+        combatMessages("TIE, Nobody lost lives✔️ ");
     }
-    counterLives();
+    counterLives()
 }
 
 function counterLives() {
-    const result = document.querySelector("#result");
 
     if (livesPlayer == 0) {
-        result.textContent = "❌YOU LOST, I'm sorry.😥";
+        combatMessages("❌YOU LOST, I'm sorry.😥");
         disabledButtonAttack();
     } else if (livesOpponent == 0) {
-        result.textContent = "🏆YOU WON!! Congratulations.🎉";
+        combatMessages("🏆YOU WON!! Congratulations.🎉");
         disabledButtonAttack();
     }
 }
