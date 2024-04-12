@@ -1,5 +1,6 @@
 const sectionSelectAttack = document.querySelector("#select-attack");
 const sectionPlayAgain = document.querySelector("#play-again");
+const sectionNewRound = document.querySelector("#button-newRound");
 const sectionSelectPet = document.querySelector("#select-pet");
 const containerCards = document.querySelector("#container-cards");
 const containerAttacks = document.querySelector("#container-attacks");
@@ -103,6 +104,7 @@ function playerSelectionPet() {
 
     sectionSelectAttack.style.display = "none"
     sectionPlayAgain.style.display = "none"
+    sectionNewRound.style.display = "none"
 
     let buttonSelectPet = document.querySelector("#button-select-pet");
     buttonSelectPet.addEventListener("click", () => {
@@ -176,12 +178,15 @@ function sequenceButtons() {
             if (e.target.textContent === "🔥Fire🔥") {
                 attackPlayer.push('Fire🔥');
                 button.style.backgroundColor = '#A1C398';
+                button.disabled = true;
             } else if (e.target.textContent === "🌱Earth🌱") {
                 attackPlayer.push('Earth🌱');
                 button.style.backgroundColor = '#A1C398';
+                button.disabled = true;
             } else {
                 attackPlayer.push('Water💧');
                 button.style.backgroundColor = '#A1C398';
+                button.disabled = true;
             }
             console.log(attackPlayer)
             opponentAttack()
@@ -260,16 +265,17 @@ function combatMessages(result) {
 function counterVictories() {
 
     if (victoriesPlayer >= 3) {
-        combatMessages("🏆YOU WON!! Your opponent loses ❗​1️⃣​ life");
+        combatMessages("🏆YOU WON!! Your opponent loses ​1️⃣​ life");
         livesOpponent--
         counterLivesOpponent.textContent = livesOpponent + "❤️​";
     } else if (victoriesOpponent >= 3) {
-        combatMessages("❌YOU LOST, You lost ❗​1️⃣​ life");
+        combatMessages("❌YOU LOST, You lost ​1️⃣​ life");
         livesPlayer--
-        counterLivesOpponent.textContent = livesOpponent + "❤️​";
+        counterLivesPlayer.textContent = livesPlayer + "❤️​";
     } else {
         combatMessages("TIE, Nobody lost lives✔️ ");
     }
+    sectionNewRound.style.display = "block"
     counterLives()
 }
 
@@ -277,20 +283,9 @@ function counterLives() {
 
     if (livesPlayer == 0) {
         combatMessages("❌YOU LOST, I'm sorry.😥");
-        disabledButtonAttack();
+        sectionPlayAgain.style.display = "block";
     } else if (livesOpponent == 0) {
         combatMessages("🏆YOU WON!! Congratulations.🎉");
-        disabledButtonAttack();
+        sectionPlayAgain.style.display = "block";
     }
-}
-
-function disabledButtonAttack() {
-    const buttonFire = document.querySelector("#button-fire");
-    buttonFire.disabled = true;
-    const buttonEarth = document.querySelector("#button-earth");
-    buttonEarth.disabled = true;
-    const buttonWater = document.querySelector("#button-water");
-    buttonWater.disabled = true;
-
-    sectionPlayAgain.style.display = "block";
 }
