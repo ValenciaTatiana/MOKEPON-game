@@ -6,13 +6,15 @@ const containerAttacks = document.querySelector("#container-attacks");
 
 let mokepones = [];
 let attackPlayer = [];
-let attackOpponent;
+let attackOpponent = [];
+let attackRamdonOpponent = [];
 let optionPets;
 let inputHipodoge;
 let inputCapipepo;
 let inputRatigueya;
 let petPlayer;
 let attacksMokepons;
+let attacksMokeponsOpponent;
 let buttonFire;
 let buttonEarth;
 let buttonWater;
@@ -123,6 +125,12 @@ function opponentSelectionPet() {
     const opponentPetSelection = document.querySelector("#opponent-pet");
 
     opponentPetSelection.innerHTML = mokepones[randomOption].name;
+    attacksMokeponsOpponent = mokepones[randomOption].attackMokepon;
+
+    for(let attackPetOpponent of attacksMokeponsOpponent) {
+        attackOpponent.push(attackPetOpponent.name);
+    }
+
     sequenceButtons()
 }
 
@@ -155,32 +163,36 @@ function sequenceButtons() {
     buttons.forEach((button) => {
         button.addEventListener("click", (e) => {
             if(e.target.textContent === "🔥Fire🔥") {
-                attackPlayer.push('FIRE🔥');
-                console.log(attackPlayer)
+                attackPlayer.push('Fire🔥');
                 button.style.backgroundColor = '#A1C398';
             } else if(e.target.textContent === "🌱Earth🌱") {
-                attackPlayer.push('EARTH🌱');
-                console.log(attackPlayer)
+                attackPlayer.push('Earth🌱');
                 button.style.backgroundColor = '#A1C398';
             } else {
-                attackPlayer.push('WATER💧');
-                console.log(attackPlayer)
+                attackPlayer.push('Water💧');
                 button.style.backgroundColor = '#A1C398';
             }
+            console.log("jugador")
+            console.log(attackPlayer)
+            opponentAttack()
         })
     })
 }
 
 function opponentAttack() {
-    let randomAttack = random(1, 3)
+    let randomAttack = random(0, attackOpponent.length -1)
 
-    if (randomAttack == 1) {
-        attackOpponent = "FIRE🔥";
-    } else if (randomAttack == 2) {
-        attackOpponent = "EARTH🌱";
-    } else {
-        attackOpponent = "WATER💧";
+    if(attackOpponent[randomAttack] === '🔥Fire🔥') {
+        attackOpponent.splice(randomAttack,1)
+        attackRamdonOpponent.push('Fire🔥')
+    } else if(attackOpponent[randomAttack] === '🌱Earth🌱') {
+        attackOpponent.splice(randomAttack,1)
+        attackRamdonOpponent.push('Earth🌱')
+    } else if(attackOpponent[randomAttack] === '💧Water💧'){
+        attackOpponent.splice(randomAttack,1)
+        attackRamdonOpponent.push('Water💧')
     }
+
     attackMessages();
 }
 
