@@ -134,15 +134,12 @@ function playerSelectionPet() {
 }
 
 function opponentSelectionPet() {
+    
     let randomOption = random(0, mokepones.length - 1);
     const opponentPetSelection = document.querySelector("#opponent-pet");
 
     opponentPetSelection.innerHTML = mokepones[randomOption].name;
     attacksMokeponsOpponent = mokepones[randomOption].attackMokepon;
-
-    for (let attackPetOpponent of attacksMokeponsOpponent) {
-        attackOpponent.push(attackPetOpponent.name);
-    }
 
     sequenceButtons()
 }
@@ -176,41 +173,32 @@ function sequenceButtons() {
     buttons.forEach((button) => {
         button.addEventListener("click", (e) => {
             if (e.target.textContent === "🔥Fire🔥") {
-                attackPlayer.push('Fire🔥');
+                attackPlayer.push('🔥Fire🔥');
                 button.style.backgroundColor = '#A1C398';
                 button.disabled = true;
             } else if (e.target.textContent === "🌱Earth🌱") {
-                attackPlayer.push('Earth🌱');
+                attackPlayer.push('🌱Earth🌱');
                 button.style.backgroundColor = '#A1C398';
                 button.disabled = true;
             } else {
-                attackPlayer.push('Water💧');
+                attackPlayer.push('💧Water💧');
                 button.style.backgroundColor = '#A1C398';
                 button.disabled = true;
             }
-            console.log(attackPlayer)
             opponentAttack()
         })
     })
 }
 
 function opponentAttack() {
-    let randomAttack = random(0, attackOpponent.length - 1)
+    let randomAttacks = attacksMokeponsOpponent.sort(() => Math.random() - 0.5);
+    let selectedAttacks = randomAttacks.slice(0, 5);
 
-    if (attackOpponent[randomAttack] === '🔥Fire🔥') {
-        attackOpponent.splice(randomAttack, 1)
-        attackRamdonOpponent.push('Fire🔥')
-    } else if (attackOpponent[randomAttack] === '🌱Earth🌱') {
-        attackOpponent.splice(randomAttack, 1)
-        attackRamdonOpponent.push('Earth🌱')
-    } else if (attackOpponent[randomAttack] === '💧Water💧') {
-        attackOpponent.splice(randomAttack, 1)
-        attackRamdonOpponent.push('Water💧')
-    }
-    console.log(attackRamdonOpponent)
+    selectedAttacks.forEach((attack) => {
+        attackRamdonOpponent.push(attack.name);
+    });
     startCombat()
 }
-
 function startCombat() {
     if (attackPlayer.length === 5) {
         combat()
@@ -220,9 +208,6 @@ function startCombat() {
 function attcksBothPlayers(player, opponent) {
     indexAttackPlayer = attackPlayer[player]
     indexAttackOpponent = attackRamdonOpponent[opponent]
-
-    console.log(indexAttackPlayer)
-    console.log(indexAttackOpponent)
 }
 
 function combat() {
@@ -243,8 +228,6 @@ function combat() {
             victoriesOpponent++
         }
     }
-    console.log(victoriesPlayer);
-    console.log(victoriesOpponent);
     counterVictories();
 }
 
@@ -257,9 +240,15 @@ function combatMessages(result) {
     newAttackPlayer.innerHTML = indexAttackPlayer;
     newAttackOpponent.innerHTML = indexAttackOpponent;
 
+    console.log(newAttackPlayer);
+    console.log(newAttackOpponent);
+
     //Agrega un elemento hijo(En este caso el parrafo creado) al elemento padre(En este caso al section, donde ira el mensaje)
     resultAttackPlayer.appendChild(newAttackPlayer);
     resultAttackOpponent.appendChild(newAttackOpponent);
+
+    console.log(attackPlayer)
+    console.log(attackRamdonOpponent)
 }
 
 function counterVictories() {
@@ -275,6 +264,22 @@ function counterVictories() {
     } else {
         combatMessages("TIE, Nobody lost lives✔️ ");
     }
+
+    sectionNewRound.addEventListener("click", () => {
+
+        attackPlayer = [];
+        attackRamdonOpponent = [];
+        victoriesPlayer = 0;
+        victoriesOpponent = 0;
+
+        buttons.forEach((button) => {
+            button.disabled = false; // Habilitar el botón
+            button.style.backgroundColor = '#C6EBC5'; // Restablecer el color de 
+        });
+
+
+    })
+
     sectionNewRound.style.display = "block"
     counterLives()
 }
@@ -284,8 +289,10 @@ function counterLives() {
     if (livesPlayer == 0) {
         combatMessages("❌YOU LOST, I'm sorry.😥");
         sectionPlayAgain.style.display = "block";
+        sectionNewRound.style.display = "none";
     } else if (livesOpponent == 0) {
         combatMessages("🏆YOU WON!! Congratulations.🎉");
         sectionPlayAgain.style.display = "block";
+        sectionNewRound.style.display = "none";
     }
 }
