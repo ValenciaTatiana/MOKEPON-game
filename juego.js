@@ -16,6 +16,8 @@ let mokepones = [];
 let attackPlayer = [];
 let attackOpponent = [];
 let attackRamdonOpponent = [];
+let attackPositions = []
+let buttons = [];
 let optionPets;
 let inputHipodoge;
 let inputCapipepo;
@@ -26,14 +28,15 @@ let attacksMokeponsOpponent;
 let buttonFire;
 let buttonEarth;
 let buttonWater;
-let buttons = [];
+let newAttackPlayer;
+let newAttackOpponent;
 let indexAttackPlayer;
 let indexAttackOpponent;
 let victoriesPlayer = 0;
 let victoriesOpponent = 0;
 let livesPlayer = 3;
 let livesOpponent = 3;
-
+let rounds = 1;
 
 class Mokepon {
     constructor(name, image, lifes) {
@@ -81,7 +84,6 @@ function random(min, max) {
 }
 
 function startGame() {
-
     mokepones.forEach((mokepon) => {
         optionPets = `<input type="radio" name="pet" id=${mokepon.name} />
         <label class="cards-pets" for=${mokepon.name}>
@@ -94,21 +96,19 @@ function startGame() {
         inputHipodoge = document.querySelector("#Hipodoge");
         inputCapipepo = document.querySelector("#Capipepo");
         inputRatigueya = document.querySelector("#Ratigueya");
-
     })
 
     playerSelectionPet()
 }
 
 function playerSelectionPet() {
-
     sectionSelectAttack.style.display = "none"
     sectionPlayAgain.style.display = "none"
     sectionNewRound.style.display = "none"
 
     let buttonSelectPet = document.querySelector("#button-select-pet");
     buttonSelectPet.addEventListener("click", () => {
-
+        
         let playerPetSelection = document.querySelector("#player-pet");
 
         if (inputHipodoge.checked) {
@@ -122,11 +122,12 @@ function playerSelectionPet() {
             petPlayer = inputRatigueya.id;
         } else {
             alert("Debes de seleccionar una mascota");
-            sectionSelectAttack.style.display = "none"
+            return;
         }
 
         sectionSelectPet.style.display = "none";
         sectionSelectAttack.style.display = "flex";
+        attackPositions = shuffleArray([0, 1, 2, 3, 4]);
 
         chooseAttack(playerPetSelection)
         opponentSelectionPet();
@@ -191,12 +192,19 @@ function sequenceButtons() {
 }
 
 function opponentAttack() {
-    let randomAttacks = attacksMokeponsOpponent.sort(() => Math.random() - 0.5);
-    let selectedAttacks = randomAttacks.slice(0, 5);
+    let copyAttacksMokeponsOpponent = [...attacksMokeponsOpponent]; // Hacer una copia del array
+    let randomAttackPostition = attackPositions[0];
 
-    selectedAttacks.forEach((attack) => {
-        attackRamdonOpponent.push(attack.name);
-    });
+    if (copyAttacksMokeponsOpponent[randomAttackPostition].name === '🔥Fire🔥') {
+        attackPositions.splice(0, 1);
+        attackRamdonOpponent.push('🔥Fire🔥');
+    } else if (copyAttacksMokeponsOpponent[randomAttackPostition].name === '🌱Earth🌱') {
+        attackPositions.splice(0, 1);
+        attackRamdonOpponent.push('🌱Earth🌱');
+    } else if (copyAttacksMokeponsOpponent[randomAttackPostition].name === '💧Water💧') {
+        attackPositions.splice(0, 1);
+        attackRamdonOpponent.push('💧Water💧');
+    }
     startCombat()
 }
 function startCombat() {
@@ -211,18 +219,20 @@ function attcksBothPlayers(player, opponent) {
 }
 
 function combat() {
-
     for (let i = 0; i < attackPlayer.length; i++) {
         if (attackPlayer[i] === attackRamdonOpponent[i]) {
+            console.log('EMPATE')
             attcksBothPlayers(i, i)
             combatMessages("❗TIE🤝🏻");
-        } else if ((attackPlayer[i] == "Water💧" && attackRamdonOpponent[i] == "Fire🔥") ||
-            (attackPlayer[i] == "Fire🔥" && attackRamdonOpponent[i] == "Earth🌱") ||
-            (attackPlayer[i] == "Earth🌱" && attackRamdonOpponent[i] == "Water💧")) {
+        } else if ((attackPlayer[i] =="💧Water💧" && attackRamdonOpponent[i] == "🔥Fire🔥") ||
+            (attackPlayer[i] == "🔥Fire🔥" && attackRamdonOpponent[i] == "🌱Earth🌱") ||
+            (attackPlayer[i] == "🌱Earth🌱" && attackRamdonOpponent[i] == "💧Water💧")) {
+            console.log('GANO')
             attcksBothPlayers(i, i)
             combatMessages("🏆YOU WON!!🎉");
             victoriesPlayer++
         } else {
+            console.log('PIERDO')
             attcksBothPlayers(i, i)
             combatMessages("❌YOU LOST😥");
             victoriesOpponent++
@@ -231,68 +241,76 @@ function combat() {
     counterVictories();
 }
 
-function combatMessages(result) {
-    //Crea un nuevo elemento HTML
-    let newAttackPlayer = document.createElement("p");
-    let newAttackOpponent = document.createElement("p");
+function combatMessages(result, isFinalMessage = false) {
+
+    newAttackPlayer = document.createElement("p");
+    newAttackOpponent = document.createElement("p");
 
     resultConbat.innerHTML = result;
-    newAttackPlayer.innerHTML = indexAttackPlayer;
-    newAttackOpponent.innerHTML = indexAttackOpponent;
 
-    console.log(newAttackPlayer);
-    console.log(newAttackOpponent);
-
+    if(!isFinalMessage){
+        newAttackPlayer.innerHTML = indexAttackPlayer;
+        newAttackOpponent.innerHTML = indexAttackOpponent;
+    }
     //Agrega un elemento hijo(En este caso el parrafo creado) al elemento padre(En este caso al section, donde ira el mensaje)
     resultAttackPlayer.appendChild(newAttackPlayer);
     resultAttackOpponent.appendChild(newAttackOpponent);
 
-    console.log(attackPlayer)
-    console.log(attackRamdonOpponent)
 }
 
 function counterVictories() {
-
     if (victoriesPlayer >= 3) {
-        combatMessages("🏆YOU WON!! Your opponent loses ​1️⃣​ life");
+        combatMessages("🏆YOU WON!! Your opponent loses ​1️⃣​ life", true);
         livesOpponent--
         counterLivesOpponent.textContent = livesOpponent + "❤️​";
+        rounds++
     } else if (victoriesOpponent >= 3) {
-        combatMessages("❌YOU LOST, You lost ​1️⃣​ life");
+        combatMessages("❌YOU LOST, You lost ​1️⃣​ life", true);
         livesPlayer--
         counterLivesPlayer.textContent = livesPlayer + "❤️​";
+        rounds++
     } else {
-        combatMessages("TIE, Nobody lost lives✔️ ");
+        combatMessages("TIE, Nobody lost lives✔️ ", true);
+        rounds++
     }
+    newRound()
+}
+
+function shuffleArray(array) {
+    return array.sort(() => 0.5 - Math.random());
+}
+
+function counterLives() {
+    if (livesPlayer == 0) {
+        combatMessages("❌YOU LOST, I'm sorry.😥");
+        sectionPlayAgain.style.display = "block";
+        sectionNewRound.style.display = "none"
+    } else if (livesOpponent == 0) {
+        combatMessages("🏆YOU WON!! Congratulations.🎉");
+        sectionPlayAgain.style.display = "block";
+        sectionNewRound.style.display = "none"
+    }
+}
+
+function newRound() {
+    attackPositions = shuffleArray([0, 1, 2, 3, 4])
+    sectionNewRound.style.display = "block"
 
     sectionNewRound.addEventListener("click", () => {
+
+        sectionNewRound.style.display = "none"
 
         attackPlayer = [];
         attackRamdonOpponent = [];
         victoriesPlayer = 0;
         victoriesOpponent = 0;
 
+        resultConbat.innerHTML = `💥Round ${rounds} 💫`;
+
         buttons.forEach((button) => {
-            button.disabled = false; // Habilitar el botón
-            button.style.backgroundColor = '#C6EBC5'; // Restablecer el color de 
+            button.disabled = false;
+            button.style.backgroundColor = '#C6EBC5';
         });
-
-
     })
-
-    sectionNewRound.style.display = "block"
     counterLives()
-}
-
-function counterLives() {
-
-    if (livesPlayer == 0) {
-        combatMessages("❌YOU LOST, I'm sorry.😥");
-        sectionPlayAgain.style.display = "block";
-        sectionNewRound.style.display = "none";
-    } else if (livesOpponent == 0) {
-        combatMessages("🏆YOU WON!! Congratulations.🎉");
-        sectionPlayAgain.style.display = "block";
-        sectionNewRound.style.display = "none";
-    }
 }
