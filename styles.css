@@ -94,12 +94,21 @@ button {
     cursor: pointer;
 }
 
+.buttonAttack {
+    margin: 0.2rem;
+}
+
 #button-fire:hover,
 #button-earth:hover,
-#button-water:hover,
-#button-playAgain:hover {
+#button-water:hover {
     background-color: #A1C398;
     cursor: pointer;
+}
+#button-playAgain:hover, 
+#button-newRound:hover {
+    background-color: #FA7070;
+    border: 2px solid #fd5a5a;
+    color: white;
 }
 
 #select-attack {
@@ -244,6 +253,16 @@ button {
 
     .cards-pets img {
         width: 160px;
+    }
+
+    .buttonAttack {
+        margin: 0.5rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        width: 200px;
     }
 }
 
