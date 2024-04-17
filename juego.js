@@ -306,6 +306,8 @@ function newRound() {
         victoriesOpponent = 0;
 
         resultConbat.innerHTML = `💥Round ${rounds} 💫`;
+        newAttackPlayer.innerHTML = `<span class="finished-round">Round ${rounds - 1}<br>finished</span>`;
+        newAttackOpponent.innerHTML = `<span class="finished-round">Round ${rounds - 1}<br>finished</span>`;
 
         buttons.forEach((button) => {
             button.disabled = false;

@@ -177,6 +177,11 @@ button {
     padding: 0.2rem;
 }
 
+.finished-round {
+    color: #FA7070;
+    text-transform: uppercase;
+}
+
 
 @media (min-width: 1440px) {
     html {
