@@ -50,7 +50,6 @@
 
 <p>Simplemente abre el archivo <code>index.html</code> en tu navegador web para lanzar la aplicación.</p>
 
-
 <p>¡Disfruta de emocionantes batallas con maravillosas mascotas y sus increíbles poderes! 🎉</p>
 
 # Página Web Terminada 💯
@@ -62,11 +61,9 @@
 # 📲Página Web Responsive💻
 ![other](https://github.com/ValenciaTatiana/MOKEPON-game/assets/157426277/552a1f56-9f70-4739-96f1-3d964fedf3b1)
 
-
 # Certificado🏅
 _Certificado entregado por Platzi, por la finalización del **Curso Básico de Programación**._
-
-
+![certificado](https://github.com/ValenciaTatiana/MOKEPON-game/assets/157426277/50bb915f-3f05-47eb-9dd4-36f8d8f2265d)
 
 # Sitio Web Online 💥
 Para acceder al sitio web en línea, por favor visita el siguiente enlace: [https://bucolic-yeot-54fbcc.netlify.app/](https://66216b67a247a5058b745b1d--zesty-muffin-ffbf4f.netlify.app/)
