@@ -16,37 +16,29 @@
 
 ## ✅Requisitos✅
 
-<p>Para garantizar un funcionamiento adecuado, por favor sigue los siguientes requisitos:</p>
+<p>Para disfrutar plenamente del juego, asegúrate de cumplir con los siguientes requisitos:</p>
 
-  1. La aplicación solo admite letras minúsculas.
-  2. No utilices letras con acentos ni caracteres especiales.
-  3. Debe ser posible convertir una palabra a su versión encriptada y viceversa.
-
+1. Selecciona tu Mokepon inicial.
+2. Elige tus ataques cuidadosamente durante las batallas.
+3. Derrota a tus oponentes en cada ronda para avanzar en el juego y o perder vidas.
 
 ## ⭐Elementos principales de la página
 
-  * Título de sitio web.
-  * Campo para el texto que va a ser encriptado/desencriptado.
-  * Un botón para encriptar.
-  * Un botón para desencriptar.
-  * Área para mostrar el texto encriptado/desencriptado.
-
-## Desafios Extras (Opcional)⚡
-
-  * Agregar un boton de copiado.
-  * Hacer una página web Responsive.
+* Selección de Mokepon: Escoge tu Mokepon inicial para comenzar tu viaje.
+* Ataques Disponibles: Elige entre una variedad de ataques específicos para cada Mokepon.
+* Batallas Épicas: Enfréntate a otros Mokepones y demuestra tus habilidades en batallas llenas de acción.
+* Contador de Vidas: Mantente al tanto de las vidas restantes de tu Mokepon y las de tu oponente durante las batallas.
 
 ## Uso
 
-  1. <strong>Campo de Entrada:</strong> Ingresa el texto que deseas encriptar o desencriptar.
-  2. <strong>Opciones:</strong> Elige entre encriptación y desencriptación.
-  3. <strong>Visualización del Resultado:</strong> Observa el texto encriptado o desencriptado en la pantalla.
-  4. <strong>Botón de Copiado:</strong> Utiliza el botón de copiado para copiar el texto encriptado o desencriptado al portapapeles.
+  1. <strong>Selección de Mokepon: </strong>  Elige tu Mokepon inicial entre Hipodoge, Capipepo y Ratigueya.
+  2. <strong>Ataques Disponibles:</strong> Selecciona tus ataques preferidos para usar durante las batallas.
+  3. <strong>Batallas Épicas:</strong> Entra en el campo de batalla y desafía a otros Mokepones a duelos emocionantes. Gana cada ronda con 3 o más ataques y conserva tus vidas.
+  4. <strong>Contador de Vidas:</strong> Mantente al tanto de las vidas restantes de tu Mokepon y las de tu oponente durante las batallas.
 
 ### Ejemplo
 
-<p>Encriptar: "gato" => "gaitober"<br>
-Desencriptar: "gaitober" => "gato"</p>
+<p>En una batalla, Hipodoge utiliza "💧Water💧" contra Ratigueya, quien responde con "🔥Fire🔥".</p>
 
 ### Tecnologías Utilizadas
 
@@ -58,18 +50,23 @@ Desencriptar: "gaitober" => "gato"</p>
 
 <p>Simplemente abre el archivo <code>index.html</code> en tu navegador web para lanzar la aplicación.</p>
 
-<p>¡Disfruta encriptando y desencriptando tus mensajes de forma segura! 🎉</p>
+
+<p>¡Disfruta de emocionantes batallas con maravillosas mascotas y sus increíbles poderes! 🎉</p>
 
 # Página Web Terminada 💯
-![Pagina Web Terminada](https://github.com/ValenciaTatiana/Text-Encryption-and-Decryption/assets/157426277/5b5a243b-086a-4354-9ce1-742e8e4244f2)
+![SelectMokepon](https://github.com/ValenciaTatiana/MOKEPON-game/assets/157426277/746cabc9-f4fc-40f2-95c6-2285d8912735)
+![AttackMokepones](https://github.com/ValenciaTatiana/MOKEPON-game/assets/157426277/00299619-2b4b-4499-b437-0f0a0f1d7c0f)
+![Ronda1Finished](https://github.com/ValenciaTatiana/MOKEPON-game/assets/157426277/40834359-dedf-41f0-980a-bcfeb1aa2547)
+![newRound](https://github.com/ValenciaTatiana/MOKEPON-game/assets/157426277/27b96a49-dbc5-4bf7-a13d-5b17d50c41d7)
 
 # 📲Página Web Responsive💻
-![Pagina Web Terminada Responsive](https://github.com/ValenciaTatiana/Text-Encryption-and-Decryption/assets/157426277/1ed2d289-57c7-49ea-ac19-350404b9c7ba)
+![other](https://github.com/ValenciaTatiana/MOKEPON-game/assets/157426277/552a1f56-9f70-4739-96f1-3d964fedf3b1)
 
-# Insignia🏅
-_Insignia entregada por Alura CHALLENGES - ONE, por la finalización del **PROYECTO: DECODIFICADOR DE TEXTO CON JAVASCRIPT**._
 
-![Insignia](https://github.com/ValenciaTatiana/Text-Encryption-and-Decryption/assets/157426277/95c68e4e-e372-4a17-b28c-3579a982bfbb)
+# Certificado🏅
+_Certificado entregado por Platzi, por la finalización del **Curso Básico de Programación**._
+
+
 
 # Sitio Web Online 💥
-Para acceder al sitio web en línea, por favor visita el siguiente enlace: https://bucolic-yeot-54fbcc.netlify.app/
+Para acceder al sitio web en línea, por favor visita el siguiente enlace: [https://bucolic-yeot-54fbcc.netlify.app/](https://66216b67a247a5058b745b1d--zesty-muffin-ffbf4f.netlify.app/)
