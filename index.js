@@ -12,6 +12,7 @@ const resultAttackOpponent = document.querySelector("#stroke-opponent");
 const counterLivesPlayer = document.querySelector("#life-player");
 const counterLivesOpponent = document.querySelector("#life-opponent");
 
+let playerId = null;
 let mokepones = [];
 let attackPlayer = [];
 let attackOpponent = [];
@@ -77,7 +78,6 @@ ratigueya.attackMokepon.push(
 
 mokepones.push(hipodoge, capipepo, ratigueya);
 
-window.addEventListener("load", startGame) //Evento que llama a la función startGame cuando el HTML ha cargado completamente "load"
 
 function random(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -99,7 +99,22 @@ function startGame() {
     })
 
     playerSelectionPet()
+    joinGame()
 }
+
+function joinGame() {
+    fetch("http://localhost:8080/join")
+        .then(function(res) {
+            if(res.ok) {
+                res.text()
+                .then(function (answer) {
+                    console.log(answer)
+                    playerId = answer;
+                })
+            }
+        })
+}
+
 
 function playerSelectionPet() {
     sectionSelectAttack.style.display = "none"
@@ -129,8 +144,22 @@ function playerSelectionPet() {
         sectionSelectAttack.style.display = "flex";
         attackPositions = shuffleArray([0, 1, 2, 3, 4]);
 
+        selectMokepon(petPlayer)
+
         chooseAttack(playerPetSelection)
         opponentSelectionPet();
+    })
+}
+
+function selectMokepon(petPlayer) {
+    fetch(`http://localhost:8080/mokepon/${playerId}`, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body:JSON.stringify({
+            mokepon: petPlayer
+        })
     })
 }
 
@@ -313,3 +342,5 @@ function newRound() {
     })
     counterLives()
 }
+
+window.addEventListener("load", startGame) //Evento que llama a la función startGame cuando el HTML ha cargado completamente "load"
