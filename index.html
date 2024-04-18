@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mokepon!</title>
+    <title>Mokepon! 🔥🌱💧</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <!-- Sección para seleccionar la mascota -->
     <section id="select-pet">
         <h1 class="title">Mokepon</h1>
         <h3 class="caption">Fire🔥 | Earth🌱 | Water💧</h3>
@@ -16,42 +17,48 @@
         <h2 class="instruction">Choose your pet</h2>
 
         <div id="container-cards" class="cards">
-
+            <!-- Aquí se mostrarán las cartas de selección de mascotas -->
         </div>
 
         <button id="button-select-pet" onclick=playerSelectionPet()>Select</button>
     </section>
 
+    <!-- Sección para seleccionar el ataque -->
     <section id="select-attack">
         <h1 class="title">Mokepon</h1>
         <h2 class="instruction">Choose your attack</h2>
 
         <div id="container-attacks" class="button-attack">
+            <!-- Aquí se mostrarán los botones de selección de ataque -->
 
         </div>
 
+        <!-- Mensajes del juego -->
         <div id="messages">
-            <div id="result">✨Good luck!✨</div>
+            <div id="result">✨Good luck!✨</div> <!-- Resultado del juego -->
 
+            <!-- Botón para jugar de nuevo -->
             <section id="play-again">
                 <button id="button-playAgain" onclick="location.reload()">Play again</button>
             </section>
 
+            <!-- Botón para iniciar una nueva ronda -->
             <section id="new-round">
                 <button id="button-newRound">New Round</button>
             </section>
         </div>
 
+        <!-- Contador de vida de los jugadores -->
         <div class="life-counter">
             <div>
-                <p id="life-player">3❤️</p>
-                <p id="player-pet"></p>
-                <div id="stroke-player"></div>
+                <p id="life-player">3❤️</p> <!-- Vida del jugador -->
+                <p id="player-pet"></p> <!-- Mascota del jugador -->
+                <div id="stroke-player"></div> <!-- Barra de vida del jugador -->
             </div>
             <div>
-                <p id="life-opponent">3❤️</p>
-                <p id="opponent-pet"></p>
-                <div id="stroke-opponent"></div>
+                <p id="life-opponent">3❤️</p> <!-- Vida del oponente -->
+                <p id="opponent-pet"></p> <!-- Mascota del oponente -->
+                <div id="stroke-opponent"></div> <!-- Barra de vida del oponente -->
             </div>
         </div>
     </section>

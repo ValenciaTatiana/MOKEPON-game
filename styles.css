@@ -2,8 +2,8 @@
 
 html,
 body {
-    font-family: 'fredoka';
-    background-image: url(img/mountains-1412683_1280.png);
+    font-family: 'fredoka'; /* Establece la fuente Fredoka para todo el documento */
+    background-image: url(img/mountains-1412683_1280.png); /* Establece una imagen de fondo */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -11,6 +11,7 @@ body {
     margin: 0;
 }
 
+/* Estilos para la sección de selección de mascotas */
 #select-pet {
     display: flex;
     flex-direction: column;
@@ -32,11 +33,13 @@ body {
     font-size: 32px;
 }
 
+/* Estilos para las cartas de mascotas */
 .cards {
     display: flex;
     gap: 10px;
 }
 
+/* Estilos para cada carta de mascota */
 .cards-pets {
     width: 150px;
     height: 200px;
@@ -51,11 +54,13 @@ body {
     align-items: center;
 }
 
+/* Estilos cuando el mouse está sobre una carta de mascota */
 .cards-pets:hover {
     border: 3px solid #F08080;
     cursor: pointer;
 }
 
+/* Estilos para las imágenes de mascotas dentro de las cartas */
 .cards-pets img {
     width: 130px;
 }
@@ -70,11 +75,13 @@ input {
     display: none;
 }
 
+/* Estilos para los botones de selección de mascota */
 input:checked+label {
     border: 3px solid #F08080;
     text-shadow: 0px 2px 2px #FA7070;
 }
 
+/* Estilos generales para los botones */
 button {
     margin-top: 30px;
     width: 150px;
@@ -86,7 +93,7 @@ button {
     font-weight: bold;
     font-family: 'fredoka';
 }
-
+/* Estilos cuando el mouse está sobre el boton seleccionar mascota */
 #button-select-pet:hover {
     background-color: #FA7070;
     border: 2px solid #fd5a5a;
@@ -98,12 +105,15 @@ button {
     margin: 0.2rem;
 }
 
+/* Estilos cuando el mouse está sobre los botones de ataque */
 #button-fire:hover,
 #button-earth:hover,
 #button-water:hover {
     background-color: #A1C398;
     cursor: pointer;
 }
+
+/* Estilos cuando el mouse está sobre los botones nuevo juego y nueva ronda */
 #button-playAgain:hover, 
 #button-newRound:hover {
     background-color: #FA7070;
@@ -182,18 +192,23 @@ button {
     text-transform: uppercase;
 }
 
+/* Media queries para diferentes tamaños de pantalla */
+
+ /* Estilos para pantallas grandes */
 @media (min-width: 1440px) {
     html {
         height: 100%;
     }
 }
 
+/* Estilos para pantallas medianas */
 @media (min-width: 768px) {
     html {
         height: 100%;
     }
 }
 
+/* Estilos para pantallas pequeñas */
 @media (max-width: 390px) {
     .cards {
         flex-direction: column;
@@ -237,6 +252,7 @@ button {
     }
 }
 
+/* Estilos para pantallas medianas */
 @media (max-width: 768px) {
     .title {
         font-size: 48px;
@@ -270,6 +286,7 @@ button {
     }
 }
 
+ /* Estilos para pantallas grandes */
 @media (max-width: 1440px) {
     .title {
         font-size: 48px;
