@@ -10,58 +10,56 @@
 
 <body>
     <!-- Sección para seleccionar la mascota -->
-    <section id="select-pet">
-        <h1 class="title">Mokepon</h1>
-        <h3 class="caption">Fire🔥 | Earth🌱 | Water💧</h3>
-
-        <h2 class="instruction">Choose your pet</h2>
-
-        <div id="container-cards" class="cards">
+    <section class="select-pet-container">
+        <div class="select-pet-header">
+            <h1 class="select-pet-title">Mokepon</h1>
+            <h3 class="select-pet-caption">Fire🔥 | Earth🌱 | Water💧</h3>
+            <h2 class="select-pet-instruction">Choose Your Pet</h2>
+        </div>
+        <div class="container-cards">
             <!-- Aquí se mostrarán las cartas de selección de mascotas -->
         </div>
 
-        <button id="button-select-pet" onclick=playerSelectionPet()>Select</button>
+        <button class="button-select-pet" onclick=playerSelectionPet()>Select</button>
     </section>
 
     <!-- Sección para seleccionar el ataque -->
-    <section id="select-attack">
-        <h1 class="title">Mokepon</h1>
-        <h2 class="instruction">Choose your attack</h2>
-
-        <div id="container-attacks" class="button-attack">
-            <!-- Aquí se mostrarán los botones de selección de ataque -->
-
+    <section class="select-attack-container">
+        <div class="select-attack-header">
+            <h1 class="select-attack-title">Mokepon</h1>
+            <h2 class="select-attack-instruction">Choose Your Attack</h2>
         </div>
+        <div class="container-attacks">
+            <!-- Aquí se mostrarán los botones de selección de ataque -->
+        </div>
+        <div class="new-round"><!-- Botón para iniciar una nueva ronda -->
+        <button class="button-new-round">New Round</button>
+        </div>
+        <div class="messages-container"> <!-- Mensajes del juego -->
+            <div class="messages-result">✨Good luck!✨</div> <!-- Resultado del juego -->
 
-        <!-- Mensajes del juego -->
-        <div id="messages">
-            <div id="result">✨Good luck!✨</div> <!-- Resultado del juego -->
-
-            <!-- Botón para jugar de nuevo -->
-            <section id="play-again">
-                <button id="button-playAgain" onclick="location.reload()">Play again</button>
-            </section>
-
-            <!-- Botón para iniciar una nueva ronda -->
-            <section id="new-round">
-                <button id="button-newRound">New Round</button>
+            <section class="play-again"> <!-- Botón para jugar de nuevo -->
+                <button class="button-play-again" onclick="location.reload()">Play Again</button>
             </section>
         </div>
 
         <!-- Contador de vida de los jugadores -->
-        <div class="life-counter">
-            <div>
-                <p id="life-player">3❤️</p> <!-- Vida del jugador -->
-                <p id="player-pet"></p> <!-- Mascota del jugador -->
-                <div id="stroke-player"></div> <!-- Barra de vida del jugador -->
+        <div class="lives-counter">
+            <div class="lives-player">
+                <p class="life-player">3❤️</p> <!-- Vida del jugador -->
+                <p class="player-pet"></p> <!-- Mascota del jugador -->
+                <div class="player-stroke"></div> <!-- Barra de vida del jugador -->
             </div>
-            <div>
-                <p id="life-opponent">3❤️</p> <!-- Vida del oponente -->
-                <p id="opponent-pet"></p> <!-- Mascota del oponente -->
-                <div id="stroke-opponent"></div> <!-- Barra de vida del oponente -->
+            <div class="lives-opponent">
+                <p class="life-opponent">3❤️</p> <!-- Vida del oponente -->
+                <p class="opponent-pet"></p> <!-- Mascota del oponente -->
+                <div class="opponent-stroke"></div> <!-- Barra de vida del oponente -->
             </div>
-        </div>
+        </div>    
+
     </section>
+
+
     <script src="index.js"></script>
 </body>
 

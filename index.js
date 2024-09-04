@@ -1,16 +1,14 @@
-const sectionSelectAttack = document.querySelector("#select-attack");
-const sectionPlayAgain = document.querySelector("#play-again");
-const sectionNewRound = document.querySelector("#button-newRound");
-const sectionSelectPet = document.querySelector("#select-pet");
-const containerCards = document.querySelector("#container-cards");
-const containerAttacks = document.querySelector("#container-attacks");
-
-const resultConbat = document.querySelector("#result");
-const resultAttackPlayer = document.querySelector("#stroke-player");
-const resultAttackOpponent = document.querySelector("#stroke-opponent");
-
-const counterLivesPlayer = document.querySelector("#life-player");
-const counterLivesOpponent = document.querySelector("#life-opponent");
+const sectionSelectAttack = document.querySelector(".select-attack-container");
+const sectionPlayAgain = document.querySelector(".play-again");
+const sectionNewRound = document.querySelector(".button-new-round");
+const sectionSelectPet = document.querySelector(".select-pet-container");
+const containerCards = document.querySelector(".container-cards");
+const containerAttacks = document.querySelector(".container-attacks");
+const resultConbat = document.querySelector(".messages-result");
+const resultAttackPlayer = document.querySelector(".player-stroke");
+const resultAttackOpponent = document.querySelector(".opponent-stroke");
+const counterLivesPlayer = document.querySelector(".life-player");
+const counterLivesOpponent = document.querySelector(".life-opponent");
 
 // Declaración de variables globales
 let playerId = null;
@@ -63,7 +61,6 @@ hipodoge.attackMokepon.push(
     { name: '🔥Fire🔥', id: 'button-fire' },
     { name: '🌱Earth🌱', id: 'button-earth' },
 )
-
 capipepo.attackMokepon.push(
     { name: '🌱Earth🌱', id: 'button-earth' },
     { name: '🌱Earth🌱', id: 'button-earth' },
@@ -71,7 +68,6 @@ capipepo.attackMokepon.push(
     { name: '🔥Fire🔥', id: 'button-fire' },
     { name: '💧Water💧', id: 'button-water' },
 )
-
 ratigueya.attackMokepon.push(
     { name: '🔥Fire🔥', id: 'button-fire' },
     { name: '🔥Fire🔥', id: 'button-fire' },
@@ -93,7 +89,7 @@ function startGame() {
     // Mostrar las mascotas disponibles para seleccionar
     mokepones.forEach((mokepon) => {
         optionPets = `<input type="radio" name="pet" id=${mokepon.name} />
-        <label class="cards-pets" for=${mokepon.name}>
+        <label class="cards-pets ${mokepon.name}" for=${mokepon.name}>
             <p class="pet">${mokepon.name}</p>
             <img src=${mokepon.image} alt=${mokepon.name}>
         </label>`
@@ -132,10 +128,10 @@ function playerSelectionPet() {
     sectionPlayAgain.style.display = "none"
     sectionNewRound.style.display = "none"
 
-    let buttonSelectPet = document.querySelector("#button-select-pet");
+    let buttonSelectPet = document.querySelector(".button-select-pet");
     buttonSelectPet.addEventListener("click", () => {
         // Obtener la mascota seleccionada por el jugador
-        let playerPetSelection = document.querySelector("#player-pet");
+        let playerPetSelection = document.querySelector(".player-pet");
 
         if (inputHipodoge.checked) {
             playerPetSelection.textContent = inputHipodoge.id;
@@ -182,7 +178,7 @@ function selectMokepon(petPlayer) {
 function opponentSelectionPet() {
     // Seleccionar una mascota aleatoria para el oponente
     let randomOption = random(0, mokepones.length - 1);
-    const opponentPetSelection = document.querySelector("#opponent-pet");
+    const opponentPetSelection = document.querySelector(".opponent-pet");
 
     // Mostrar la mascota seleccionada del oponente
     opponentPetSelection.innerHTML = mokepones[randomOption].name;
@@ -207,7 +203,7 @@ function chooseAttack(playerPetSelection) {
 // Función para mostrar los botones de ataques disponibles para el jugador
 function showAttack(attacks) {
     attacks.forEach((attack) => {
-        attacksMokepons = `<button id=${attack.id} class="buttonAttack">${attack.name}</button>`;
+        attacksMokepons = `<button id=${attack.id} class="button-attack">${attack.name}</button>`;
 
         containerAttacks.innerHTML += attacksMokepons;
     })
@@ -216,7 +212,7 @@ function showAttack(attacks) {
     buttonEarth = document.querySelector("#button-earth");
     buttonWater = document.querySelector("#button-water");
 
-    buttons = document.querySelectorAll(".buttonAttack")
+    buttons = document.querySelectorAll(".button-attack")
 }
 
 // Función para manejar la secuencia de botones de ataque del jugador
@@ -281,10 +277,18 @@ function combat() {
             attcksBothPlayers(i, i);
             combatMessages("🏆YOU WON!!🎉");
             victoriesPlayer++;
+
+            if (victoriesPlayer >= 3) {
+                break;
+            }
         } else {
             attcksBothPlayers(i, i);
             combatMessages("❌YOU LOST😥");
             victoriesOpponent++;
+
+            if (victoriesOpponent >= 3) {
+                break;
+            }
         }
     }
     // Actualizar los contadores de victorias y determinar si alguien pierde vidas

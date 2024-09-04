@@ -1,370 +1,291 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
 
-html,
+html {
+    font-size: 62.5%;
+}
+
 body {
-    font-family: 'fredoka'; /* Establece la fuente Fredoka para todo el documento */
-    background-image: url(img/mountains-1412683_1280.png); /* Establece una imagen de fondo */
+    font-size: 16px;
+    font-family: 'fredoka';
+    background-image: url(img/mountains-1412683_1280.png);
+    background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     background-attachment: fixed;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed; /* Fija la capa sobre el fondo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(128, 0, 128, 0.3);
+    z-index: -1;
+}
+.select-pet-container,
+.select-attack-container {
+    margin: 1rem;
+    text-align: center;
+}
+.select-pet-title,
+.select-attack-title {
+    font-size: 3.5rem;
+    color: #800080;
+    text-shadow: 2px 2px 4px rgb(255, 255, 255);
+    margin-bottom: 0.5rem;
+}
+.select-pet-caption {
+    color: #ffff;
+    background-color: rgba(128, 0, 128, 0.3);
+    margin: 1rem 0 ;
+}
+.select-pet-instruction,
+.select-attack-instruction {
+    margin: 1rem;
+}
+button {
+    margin-top: 2rem;
+    width: 11rem;
+    height: 4rem;
+    border-radius: 0.5rem;
+    border: 2px solid #A1C398;
+    background-color: #C6EBC5;
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-family: 'fredoka';
+}
+button:hover {
+    background-color: #fca1a1;
+    border: 2px solid #fd5a5a;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+.button-play-again:hover, 
+.button-new-round:hover {
+    background-color: #FA7070;
+    border: 2px solid #fd5a5a;
+    color: white;
+}
+.button-attack {
     margin: 0;
 }
-
-/* Estilos para la sección de selección de mascotas */
-#select-pet {
+.lives-counter {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+    width: 100%;
+    height: 40rem;
+    background-color: #ffffff;
+    border-radius: 0.2rem;
+    overflow-y: auto;
+}
+.lives-player,
+.lives-opponent {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    margin: 0.5rem 2rem;
 }
-
-.title {
-    color: #F08080;
-    font-size: 40px;
-    margin-bottom: 1px;
+.life-player,
+.life-opponent {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 0;
 }
-
-.caption {
-    font-size: 20px;
+.player-stroke,
+.opponent-stroke {
+    font-size: 1.7rem;
+    font-weight: bold;
+    width: 100%;
+    padding: 0rem 1rem;
 }
-
-.instruction {
-    font-size: 32px;
+.player-pet,
+.opponent-pet {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #FA7070;
+    text-shadow: 0px 3px 2px black;
+    margin: 1rem;
 }
-
-/* Estilos para las cartas de mascotas */
-.cards {
+.container-cards {
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
-
-/* Estilos para cada carta de mascota */
 .cards-pets {
-    width: 150px;
-    height: 200px;
+    width: 60%;
+    height: 19rem;
     background-color: rgba(254, 253, 237, 0.8);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 1.1);
-    padding: 10px;
+    padding: 1rem;
     box-sizing: border-box;
-    border-radius: 15px;
+    border-radius: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
-/* Estilos cuando el mouse está sobre una carta de mascota */
+.cards-pets img {
+    width: 15rem;
+}
 .cards-pets:hover {
     border: 3px solid #F08080;
     cursor: pointer;
 }
-
-/* Estilos para las imágenes de mascotas dentro de las cartas */
-.cards-pets img {
-    width: 130px;
+input:checked+label {
+    border: 3px solid #F08080;
+    text-shadow: 0px 2px 2px #FA7070;
 }
-
 .pet {
     font-weight: bold;
-    font-size: 20px;
-    margin: 0;
+    font-size: 2rem;
+    margin: 0rem;
 }
 
 input {
     display: none;
 }
-
-/* Estilos para los botones de selección de mascota */
-input:checked+label {
-    border: 3px solid #F08080;
-    text-shadow: 0px 2px 2px #FA7070;
-}
-
-/* Estilos generales para los botones */
-button {
-    margin-top: 30px;
-    width: 150px;
-    height: 50px;
-    border-radius: 15px;
-    border: 2px solid #A1C398;
-    background-color: #C6EBC5;
-    font-size: 22px;
-    font-weight: bold;
-    font-family: 'fredoka';
-}
-/* Estilos cuando el mouse está sobre el boton seleccionar mascota */
-#button-select-pet:hover {
-    background-color: #FA7070;
-    border: 2px solid #fd5a5a;
-    color: white;
-    cursor: pointer;
-}
-
-.buttonAttack {
-    margin: 0.2rem;
-}
-
-/* Estilos cuando el mouse está sobre los botones de ataque */
-#button-fire:hover,
-#button-earth:hover,
-#button-water:hover {
-    background-color: #A1C398;
-    cursor: pointer;
-}
-
-/* Estilos cuando el mouse está sobre los botones nuevo juego y nueva ronda */
-#button-playAgain:hover, 
-#button-newRound:hover {
-    background-color: #FA7070;
-    border: 2px solid #fd5a5a;
-    color: white;
-}
-
-#select-attack {
-    flex-direction: column;
-    align-items: center;
-}
-
-#messages {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 300px;
-    background-color: rgba(254, 253, 237, 0.8);
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 20.3);
-    color: black;
-    border: 2px solid white;
-    border-radius: 8px;
-    font-size: 26px;
-    font-weight: bold;
-    margin-top: 2rem;
-    padding: 10px;
-}
-
-.life-counter {
-    display: grid;
-    grid-template-columns: 100px 100px;
-    justify-items: center;
-    text-align: center;
-    gap: 4rem;
-    height: 180px;
-    width: 285px;
-    margin: 1.5rem;
-    background-color: rgba(254, 253, 237, 0.8);
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 20.3);
-    padding: 1rem 3rem;
-    border: 2px solid white;
-    border-radius: 8px;
-    overflow-y: auto;
-}
-
-#life-player,
-#life-opponent {
-    font-size: 26px;
-    font-weight: bold;
-    margin: 0;
-}
-
-#player-pet,
-#opponent-pet {
-    font-size: 30px;
-    font-weight: bold;
-    color: #FA7070;
-    text-shadow: 4px 3px 3px black;
-    margin: 1rem;
-}
-
-#stroke-player,
-#stroke-opponent {
-    display: flex;
-    flex-direction: column;
+.select-attack-container {
     justify-content: center;
-    font-size: 24px;
-    font-weight: bold;
-    width: 200px;
-    padding: 0.2rem;
+    align-items: center;
+    flex-direction: column;
 }
-
+.container-attacks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.2rem;
+}
 .finished-round {
     color: #FA7070;
     text-transform: uppercase;
 }
-
-/* Media queries para diferentes tamaños de pantalla */
-
- /* Estilos para pantallas grandes */
-@media (min-width: 1440px) {
-    html {
-        height: 100%;
-    }
+.messages-container {
+    text-align: center;
+    width: 95%;
+    background-color: rgba(254, 253, 237, 0.8);
+    color: black;
+    border: 2px solid white;
+    border-radius: 1.2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 1rem;
 }
-
-/* Estilos para pantallas medianas */
 @media (min-width: 768px) {
-    html {
-        height: 100%;
+    .select-pet-container,
+    .select-attack-container {
+        margin: 3rem;
     }
-}
-
-/* Estilos para pantallas pequeñas */
-@media (max-width: 390px) {
-    .cards {
-        flex-direction: column;
+    .select-pet-title, 
+    .select-attack-title {
+        font-size: 4.5rem;
+        margin-bottom: 1.5rem;
     }
-
+    .select-pet-caption {
+        margin: 1.5rem 0;
+        font-size: 2.3rem;
+    }
+    .select-pet-instruction, 
+    .select-attack-instruction {
+        font-size: 2.5rem;
+        margin: 1.5rem;
+    }
+    .container-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+    }
     .cards-pets {
-        width: 190px;
+        width: 90%;
+        height: 25rem;
     }
-
+    .cards-pets img {
+        width: 18rem;
+    }
+    .Ratigueya {
+        grid-column: 1 / 3;
+        width: 45%;
+    }
     button {
-        margin: 30px 0px;
+        margin-top: 3rem;
+        width: 15rem;
+        height: 5rem;
+        font-size: 2rem;
     }
-
-    .button-attack {
-        display: flex;
-        flex-direction: column;
+    .messages-container {
+        font-size: 2.5rem;
+        padding: 0.5rem;
     }
-
-    #button-fire,
-    #button-earth,
-    #button-water {
-        margin: 0.5rem 0;
+    .player-pet, 
+    .opponent-pet {
+        font-size: 3rem;
     }
-
-    .life-counter {
-        grid-template-columns: 90px 90px;
-        gap: 3rem;
-        margin: 1rem;
-        height: 165px;
-        width: 254px;
+    .player-stroke, 
+    .opponent-stroke {
+        font-size: 2rem;
+        padding: 0rem 1.5rem;
     }
-
-    #player-pet,
-    #opponent-pet {
-        font-size: 27px;
-    }
-
-    #stroke-player,
-    #stroke-opponent {
-        font-size: 20px;
+    .button-new-round,
+    .button-play-again {
+        margin-top: 1rem;
     }
 }
-
-/* Estilos para pantallas medianas */
-@media (max-width: 768px) {
-    .title {
-        font-size: 48px;
+@media (min-width: 1440px) {
+    .select-pet-container,
+    .select-attack-container {
+        margin: 5rem;
     }
-
-    .cards {
-        gap: 10px;
+    .select-pet-title, 
+    .select-attack-title {
+        font-size: 5rem;
+        margin-bottom: 2rem;
     }
-
+    .select-pet-caption {
+        margin: 2rem 0;
+        font-size: 2.5rem;
+    }
+    .select-pet-instruction,
+    .select-attack-instruction {
+        font-size: 3rem;
+        margin: 1.5rem;
+    }
+    .container-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+        gap: 0.2rem;
+    }
     .cards-pets {
-        width: 220px;
-        height: 260px;
+        width: 90%;
+        height: 30rem;
     }
-
-    .pet {
-        font-size: 28px;
-    }
-
     .cards-pets img {
-        width: 160px;
+        width: 20rem;
     }
-
-    .buttonAttack {
-        margin: 0.5rem;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        align-content: center;
-        width: 200px;
+    .Ratigueya {
+        grid-column: 3 / 4;
     }
-}
-
- /* Estilos para pantallas grandes */
-@media (max-width: 1440px) {
-    .title {
-        font-size: 48px;
-    }
-
-    .cards-pets {
-        width: 220px;
-        height: 260px;
-    }
-
-    .pet {
-        font-size: 28px;
-    }
-
-    .cards-pets img {
-        width: 160px;
-    }
-}
-
-@media (min-width: 1669px) {
-    .title {
-        font-size: 70px;
-    }
-
-    .caption {
-        font-size: 30px;
-    }
-
-    .instruction {
-        font-size: 36px;
-    }
-
-    .cards {
-        gap: 30px;
-    }
-
-    .cards-pets {
-        width: 255px;
-        height: 300px;
-    }
-
-    .pet {
-        font-size: 38px;
-    }
-
-    .cards-pets img {
-        width: 194px;
-    }
-
     button {
-        width: 294px;
-        height: 70px;
-        font-size: 36px;
+        margin-top: 4rem;
+        width: 18rem;
+        height: 6rem;
+        font-size: 2.5rem;
     }
-
-    #messages {
-        width: 430px;
-        font-size: 34px;
+    .messages-container {
+        font-size: 3rem;
+        padding: 1rem;
     }
-
-    .life-counter {
-        height: 208px;
-        width: 390px;
-        gap: 10rem;
+    .player-pet, 
+    .opponent-pet {
+        font-size: 3.5rem;
     }
-
-    #life-player,
-    #life-opponent {
-        font-size: 30px;
-    }
-
-    #player-pet,
-    #opponent-pet {
-        font-size: 34px;
-    }
-
-    #stroke-player,
-    #stroke-opponent {
-        font-size: 28px;
+    .player-stroke, 
+    .opponent-stroke {
+        font-size: 2.5rem;
+        padding: 0rem 1.5rem;
     }
 }
