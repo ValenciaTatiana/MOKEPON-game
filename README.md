@@ -53,13 +53,13 @@
 <p>¡Disfruta de emocionantes batallas con maravillosas mascotas y sus increíbles poderes! 🎉</p>
 
 # Página Web Terminada 💯
-![SelectMokepon](https://github.com/ValenciaTatiana/MOKEPON-game/assets/157426277/746cabc9-f4fc-40f2-95c6-2285d8912735)
-![AttackMokepones](https://github.com/ValenciaTatiana/MOKEPON-game/assets/157426277/00299619-2b4b-4499-b437-0f0a0f1d7c0f)
-![Ronda1Finished](https://github.com/ValenciaTatiana/MOKEPON-game/assets/157426277/40834359-dedf-41f0-980a-bcfeb1aa2547)
-![newRound](https://github.com/ValenciaTatiana/MOKEPON-game/assets/157426277/27b96a49-dbc5-4bf7-a13d-5b17d50c41d7)
+![Ronda1Finished](https://github.com/user-attachments/assets/eb04f642-34e7-4f0c-b280-e86ef62d6785)
+![newRound](https://github.com/user-attachments/assets/ce5fcd00-8de8-4c80-94eb-cfc9cff5ac76)
+
 
 # 📲Página Web Responsive💻
-![other](https://github.com/ValenciaTatiana/MOKEPON-game/assets/157426277/552a1f56-9f70-4739-96f1-3d964fedf3b1)
+![SelectMokepon](https://github.com/user-attachments/assets/0c7ea449-fd49-44aa-a087-e81902fc4f8e)
+![other](https://github.com/user-attachments/assets/219ea310-24f6-45ec-a9cd-00c64a2f245c)
 
 # Certificado🏅
 _Certificado entregado por Platzi, por la finalización del **Curso Básico de Programación**._
